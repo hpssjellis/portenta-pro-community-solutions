@@ -1,0 +1,24 @@
+{
+  "name": "portenta-pro-community-solutions",
+  "keywords": "arduino,pro,portenta,portentaH7,examples,lora,lorawan,ethernet,vision,shield,breakout,board,edgeimpulse",
+  "description": "Arduino Pro Portenta unofficial community links and examples",
+  "authors":
+  [
+    {
+      "name": "Jeremy Ellis",
+      "email": "keyfreemusic@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com:hpssjellis/portenta-pro-community-solutions.git"
+  },
+  "version":"0.0.3",
+  "frameworks": "arduino",
+  "platforms": "mbed",
+  "export": {
+    "include": "libraries/portenta-pro-community-solutions/src"
+  }
+}
