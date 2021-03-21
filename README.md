@@ -3,6 +3,10 @@ Portenta Pro Community Solutions and Links. Zoom Wednesdays 6:00 am PST at least
 
 Note: This is a downloadable zippable Arduino library. Install using the library manager add .zip file
 
+# Goal
+
+To find and maintain example code and usful links that work with the Arduino Pro Portenta Serries of Boards and Shields
+
 ## Wednesday Zoom Times  
 6:00 am PST zoom link posted each Wednesday If I get up!   
 
