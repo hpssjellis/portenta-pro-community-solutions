@@ -28,7 +28,7 @@ To find and maintain example code and useful links that work with the Arduino Pr
 1. Zoom Image taken at 6:15 PST (disable video if you don't want to be in the image)
 1. Meeting potentailly locked at 6:15 am PST if needed
 1. Meetings generally not recorded
-1. Appropriate Chat transcript might be added to [zoom-meetings-history](zoom-meetings-history)
+1. Appropriate chat transcript might be added to [zoom-meetings-history](zoom-meetings-history)
 
 
 ### Zoom meeting pre-notes March 24, 2021
