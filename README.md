@@ -10,8 +10,8 @@ To find and maintain example code and useful links that work with the Arduino Pr
 ## Wednesday Zoom Times  
 6:00 am PST zoom link posted each Wednesday if I get up!   
 
-6:00 am PST USA California  
-9:00 am EST USA New York  
+6:00 am PST USA/Canada California/Vancouver  
+9:00 am EST USA/Canada New York/Toronto  
 1:00 pm GMT UK  
 2:00 pm CET Italy  
 6:30 pm IST India  
@@ -34,3 +34,10 @@ To find and maintain example code and useful links that work with the Arduino Pr
 ### Zoom meeting pre-notes March 24, 2021
 
 Basic start of this series. Chat at [wed24-21.md](zoom-meetings-history/wed24-21.md)
+As always looking for good simple Portenta Examples
+Specifically this meeting mbed working examples on either the Arduino IDE or other platforms.
+
+
+
+
+
