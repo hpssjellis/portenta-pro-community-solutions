@@ -31,13 +31,19 @@ To find and maintain example code and useful links that work with the Arduino Pr
 1. Appropriate chat transcript might be added to [zoom-meetings-history](zoom-meetings-history)
 
 
-### Zoom meeting pre-notes March 24, 2021
+### Zoom meeting pre-notes for Wed March 24, 2021
 
-Basic start of this series. Chat at [wed24-21.md](zoom-meetings-history/wed24-21.md)
+Basic start of this series. Chat transcript at [wed-mar24-2021.md](zoom-meetings-history/wed-mar24-2021.md)
 As always looking for good simple Portenta Examples
-Specifically this meeting mbed working examples on either the Arduino IDE or other platforms.
+Specifically this meeting asking for mbed working examples for either the Arduino IDE or other platforms.
 
 
+
+
+### Zoom meeting pre-notes Wed March 31, 2021
+
+Chat transcript at [wed-mar31-2021.md](zoom-meetings-history/wed-mar31-2021.md)
+As always looking for good simple Portenta Examples
 
 
 
