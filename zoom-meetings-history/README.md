@@ -1,3 +1,3 @@
-Iamge from meeting and chat notes (edited for appropriateness and succinctness) here.
+Images from meeting and chat notes (edited for appropriateness and succinctness) here.
 
 
