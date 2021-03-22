@@ -1,5 +1,7 @@
-# portenta-pro-community-solutions
+# Portenta-Pro-Community-Solutions
 Portenta Pro Community Solutions and Links. Zoom Wednesdays 6:00 am PST at least 15 minutes, max 60 minutes.
+
+Started March 20st 2021
 
 Note: This is a downloadable zippable Arduino library. Install using the library manager --> add .zip file
 
