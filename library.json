@@ -13,7 +13,7 @@
   "repository":
   {
     "type": "git",
-    "url": "https://github.com:hpssjellis/portenta-pro-community-solutions.git"
+    "url": "https://github.com/hpssjellis/portenta-pro-community-solutions"
   },
   "version":"0.0.3",
   "frameworks": "arduino",
