@@ -21,7 +21,7 @@ To find and maintain example code and useful links that work with the Arduino Pr
 10:00 pm JST Japan  
 
 
-## When Active Zoom Link:   here
+## Active Zoom Link will go here:  
 
 
 ## General Rules:
