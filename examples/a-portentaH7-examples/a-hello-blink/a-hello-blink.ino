@@ -25,10 +25,14 @@ void loop() {
 
 
 
+
+
 /*
 * Clickable links for helpful information
 * By @rocksetta
 * March, 2021
+* GNU GENERAL PUBLIC LICENSE
+* Use at your own risk.
 *
 *
 *
@@ -49,3 +53,4 @@ void loop() {
 *
 *
 */
+
