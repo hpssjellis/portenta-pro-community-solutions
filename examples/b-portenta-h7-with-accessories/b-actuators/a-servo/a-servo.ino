@@ -1,5 +1,5 @@
 /*  
- *   my11-servo.ino
+ *   a-servo.ino
  *
  * Note: Needs Servo version above 0.0.2 or you need to make these changes
  * https://forum.arduino.cc/index.php?topic=691668.msg4700186#msg4700186
@@ -28,12 +28,12 @@
 #include <Arduino.h>  // only needed for https://platformio.org/
 #include <Servo.h>
 
-Servo myServ04;
+Servo myServo_05;
 
 void setup() {
   
   pinMode(LED_BUILTIN, OUTPUT);
-  myServ04.attach(5);   // D5 should do PWM
+  myServo_05.attach(5);   // D5 should do PWM
 
 }
 
@@ -41,18 +41,18 @@ void loop() {
  
   digitalWrite(LED_BUILTIN, LOW); // Portenta onboard LED on    
     
-  myServ04.write(20);           // servo at 20 degrees try 0
+  myServo_05.write(20);           // servo at 20 degrees try 0
   delay(2000);
     
-  myServ04.write(160);         // servo at 160 degrees try 180
+  myServo_05.write(160);         // servo at 160 degrees try 180
   delay(2000);
 
-  myServ04.write(90);          // servo at 90 degrees
+  myServo_05.write(90);          // servo at 90 degrees
   delay(2000);   
     
     
   for (int myLoop = 20; myLoop <= 160; myLoop++){
-    myServ04.write(myLoop);
+    myServo_05.write(myLoop);
     delay(25);  // short delay 25 ms
   }
 
@@ -90,4 +90,3 @@ void loop() {
 *
 *
 */
-
