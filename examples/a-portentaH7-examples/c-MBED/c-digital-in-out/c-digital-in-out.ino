@@ -6,11 +6,9 @@ using namespace mbed;
 DigitalInOut myPin(LED1);  // Any pin
 
 void setup() {
-    Serial.begin(115200);
-}
-
-void loop() {
-    // check that mypin object is initialized and connected to a pin
+    Serial.begin(115200);    
+        
+    // check that myPin object is initialized and connected to a pin
     if (myPin.is_connected()) {
         Serial.println("myPin is initialized and connected!");
        // printf("myPin is initialized and connected!\n\r");
@@ -18,12 +16,14 @@ void loop() {
 
     // Optional: set mode as PullUp/PullDown/PullNone/OpenDrain
     myPin.mode(PullNone);
+}
 
-    while (1) {
+void loop() {
+
         // write to pin as output
         myPin.output();
-        myPin = !myPin; // toggle output
-        wait_us(500000);
+        myPin = !myPin;   // toggle output
+        wait_us(500000);  // microseconds
 
         // read from pin as input
         myPin.input();
@@ -31,7 +31,7 @@ void loop() {
         Serial.println("mypin.read() =" + String(myPin.read())  );
 
         wait_us(500000);
-    }
+
 }   
 
 
