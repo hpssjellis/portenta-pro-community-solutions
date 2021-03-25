@@ -1,28 +1,36 @@
-/* 
-*  a-hello-blink.ino for the Portenta H7
-*
-*  Turns on the blue LED for one second, then off for three seconds, repeatedly.
-*  also checks if Serial Printing is working
-*  July 22nd, 2020
-*  by Jeremy Ellis
-*  Twitter @rocksetta
-*  Website https://www.rocksetta.com
-*/
+/*  
+ * a-any-variable-resistor-sensor.ino  (Voltage Divider)
+ *
+ * GND to resistor (try different resistors I used a 5 k ohm, larger resistor larger range of values)
+ * resistor to both A0 and a 2 prong sensor (such as a photoresistor)
+ * other side of 2 prong sensor to 3V3
+ *   
+ *  By Jeremy Ellis twitter @rocksetta
+ *  Webpage http://rocksetta.com
+ *  Arduino High School Robotics Course at
+ *  https://github.com/hpssjellis/arduino-high-school-robotics-course
+ * 
+ *  Update Feb 7th, 2020
+ * 
+ *  analogReadResolution(12) assumed default
+ */
 
-void setup() {
+#include <Arduino.h>  // only needed for https://platformio.org/
+
+void setup(){  
+  
   Serial.begin(115200);
-  pinMode(LEDB, OUTPUT);   // LEDB = blue, LEDG or LED_BUILTIN = green, LEDR = red 
+  
 }
+
 
 void loop() {
-  Serial.println("Serial print works on the M7 core only.");
-  digitalWrite(LEDB, LOW);   // internal LED LOW = on
-  delay(1000);               // wait for a second
-  digitalWrite(LEDB, HIGH);  
-  delay(3000);               
+
+  Serial.println("Max = 4095, Analog Read A0: " + String(analogRead(A0)) );
+
+  delay(3000);    // wait a bit
+                  
 }
-
-
 
 
 
