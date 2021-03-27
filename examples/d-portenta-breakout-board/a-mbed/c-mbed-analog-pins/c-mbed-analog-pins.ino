@@ -20,9 +20,9 @@ using namespace mbed;
 AnalogIn   myA0(PA_0C);
 AnalogIn   myA1(PA_1C);
 AnalogIn   myA2(PC_2C);
-AnalogIn   myA3(PC_3C);
-AnalogIn   myA4(PC_2);
-AnalogIn   myA5(PC_3);
+AnalogIn   myA3(PC_3C);    // does this work?
+AnalogIn   myA4(PC_2);     // is this actually A5
+AnalogIn   myA5(PC_3);     // Does this work?
 AnalogIn   myA6(PA_4);
 AnalogIn   myA7(PA_6);
    
