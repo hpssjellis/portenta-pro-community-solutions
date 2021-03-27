@@ -1,6 +1,14 @@
 /* 
 *  .ino for the Portenta H7
 *
+**
+* GNU GENERAL PUBLIC LICENSE
+* Use at your own risk.
+************************************************ Important stuff if needed ****************************************
+*
+* Just a folder place holder no code yet
+*
+********************************************************** end ****************************************************
 *
 *
 *
