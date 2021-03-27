@@ -1,6 +1,16 @@
 /*  
  *   a-servo.ino
  *
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * Use at your own risk.
+ ************************************************ Important stuff if needed ****************************************
+ *
+ * You need both a servo motor and a power supply correct for that servo motor! Best to use an external battery
+ * even if you have a 3.3 V Servo motor.
+ *
+ ********************************************************** end ****************************************************
+ *
  * Note: Needs Servo version above 0.0.2 or you need to make these changes
  * https://forum.arduino.cc/index.php?topic=691668.msg4700186#msg4700186
  *
