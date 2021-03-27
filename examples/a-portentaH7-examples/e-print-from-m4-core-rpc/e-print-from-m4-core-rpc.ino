@@ -2,6 +2,15 @@
 /*
  * e-print-from-m4-core-rpc.ino for the Portenta H7
  *
+ * GNU GENERAL PUBLIC LICENSE
+ * Use at your own risk.
+ ************************************************ Important stuff if needed ****************************************
+ *
+ *
+ *
+ ********************************************************** end ****************************************************
+ *
+ *
  * The PortentaH7 M4 core can not print to the serial monitor
  * On the M4 core if you do a Serial.Println it goes to the TX RX UART output pins
  * This program uses RPC to redirect Serial.println to the M7 core 
