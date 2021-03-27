@@ -1,10 +1,17 @@
 /* 
 *  
+*
+*
+* GNU GENERAL PUBLIC LICENSE
+* Use at your own risk.
+************************************************ Important stuff if needed ****************************************
+*
 *  openMV is a completely different IDE that needs to be installed
 *  Go to for information
 *
 *  https://openmv.io/
 *
+********************************************************** end ****************************************************
 *
 *
 *  March, 2020
