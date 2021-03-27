@@ -6,7 +6,8 @@
 * Use at your own risk.
 ************************************************ Important stuff if needed ****************************************
 *
-*
+* You won't see anything useful unless you connected a resistor and LED correctly from GND to each pin one after another
+* 
 *
 ********************************************************** end ****************************************************
 *
