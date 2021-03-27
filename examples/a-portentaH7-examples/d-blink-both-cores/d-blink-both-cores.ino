@@ -1,13 +1,22 @@
 /*
   d-blink-both-cores.ino for the Portenta H7
-  This code can be loaded on either core.
-  The M7 core will initialize the M4 core
-  M7 will flash Blue randomly (under 6 seconds)
-  The M4 will flash Green randomly (under 6 seconds)
-  July 22nd, 2020
-  by Jeremy Ellis
-  Twitter @rocksetta
-  Website https://www.rocksetta.com
+  *
+* GNU GENERAL PUBLIC LICENSE
+* Use at your own risk.
+************************************************ Important stuff if needed ****************************************
+*
+*
+*
+********************************************************** end ****************************************************
+*
+*  This code can be loaded on either core.
+*  The M7 core will initialize the M4 core
+*  M7 will flash Blue randomly (under 6 seconds)
+*  The M4 will flash Green randomly (under 6 seconds)
+*  July 22nd, 2020
+*  by Jeremy Ellis
+*  Twitter @rocksetta
+*  Website https://www.rocksetta.com
 */
 
 
