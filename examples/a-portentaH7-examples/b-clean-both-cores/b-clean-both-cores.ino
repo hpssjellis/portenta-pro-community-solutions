@@ -1,7 +1,18 @@
-//  b-both-core-clean.ino
-//  If uploaded to the M7 Core erases what was on it and boots the M4 core
-//  If uploaded to the M4 Core erases what was on it.
-//  By Rocksetta
+/*
+* b-both-core-clean.ino
+*
+* GNU GENERAL PUBLIC LICENSE
+* Use at your own risk.
+************************************************ Important stuff if needed ****************************************
+*
+*
+*
+********************************************************** end ****************************************************
+*
+*  If uploaded to the M7 Core erases what was on it and boots the M4 core
+*  If uploaded to the M4 Core erases what was on it.
+*  By Rocksetta
+*/
 
 void setup() {
   #ifdef CORE_CM7  
