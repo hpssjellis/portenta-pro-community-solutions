@@ -1,3 +1,18 @@
+/*
+*
+* GNU GENERAL PUBLIC LICENSE
+* Use at your own risk.
+************************************************ Important stuff if needed ****************************************
+*
+*
+*
+********************************************************** end ****************************************************
+*
+*/
+
+
+
+
 #include "mbed.h"
   mbed::DigitalOut myLedRed(PK_5); // red
   mbed::DigitalOut myLedGreen(PK_6); // green
