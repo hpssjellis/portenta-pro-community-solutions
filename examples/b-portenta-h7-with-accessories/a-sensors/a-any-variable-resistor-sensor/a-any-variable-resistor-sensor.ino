@@ -1,6 +1,15 @@
 /*  
  * a-any-variable-resistor-sensor.ino  (Voltage Divider)
  *
+ * GNU GENERAL PUBLIC LICENSE
+ * Use at your own risk.
+ ************************************************ Important stuff if needed ****************************************
+ *
+ *  Your need a sensor that is a variable resistor. Most sensors that just have 2 wires coming from them are variable resistors.
+ *
+ ********************************************************** end ****************************************************
+ *
+ *
  * GND to resistor (try different resistors I used a 5 k ohm, larger resistor larger range of values)
  * resistor to both A0 and a 2 prong sensor (such as a photoresistor)
  * other side of 2 prong sensor to 3V3
