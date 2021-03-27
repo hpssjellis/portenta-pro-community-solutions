@@ -1,6 +1,14 @@
 /* 
 *  a-hello-blink.ino for the Portenta H7
 *
+* GNU GENERAL PUBLIC LICENSE
+* Use at your own risk.
+************************************************ Important stuff if needed ****************************************
+*
+*
+*
+********************************************************** end ****************************************************
+*
 *  Turns on the blue LED for one second, then off for three seconds, repeatedly.
 *  also checks if Serial Printing is working
 *  July 22nd, 2020
