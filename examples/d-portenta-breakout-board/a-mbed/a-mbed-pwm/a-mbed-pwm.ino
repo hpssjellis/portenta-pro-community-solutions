@@ -1,4 +1,6 @@
 /*
+*   a-mbed-pwm.ino
+* Activates all Breakout Board PWM pins. Note: Presently PWM 3 and 4 are broken
 *
 * GNU GENERAL PUBLIC LICENSE
 * Use at your own risk.
