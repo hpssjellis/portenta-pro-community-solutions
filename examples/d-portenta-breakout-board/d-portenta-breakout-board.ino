@@ -1,4 +1,14 @@
-
+/*
+*
+* GNU GENERAL PUBLIC LICENSE
+* Use at your own risk.
+************************************************ Important stuff if needed ****************************************
+*
+* This file is just a folder placeholdewr, no code yet
+*
+********************************************************** end ****************************************************
+*
+*/
 
 
 
