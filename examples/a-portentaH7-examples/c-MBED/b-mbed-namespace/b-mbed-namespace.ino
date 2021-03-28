@@ -48,7 +48,7 @@ void loop() {
 *
 *
 *
-*  Artduino Pro Links:
+*  Arduino Pro Links:
 *
 *  https://store.arduino.cc/usa/portenta-h7
 *  https://forum.arduino.cc/index.php?board=148.0
