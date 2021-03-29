@@ -15,6 +15,21 @@
  * #define SERIAL1_TX      (digitalPinToPinName(PIN_SERIAL_TX))
  * #define SERIAL1_RX      (digitalPinToPinName(PIN_SERIAL_RX))
  *
+ * From the schematics for the Portenta https://content.arduino.cc/assets/Pinout-PortentaH7_latest.pdf
+ * UART0 TX PA_0
+ * UART0 RX PI_9
+ *
+ * UART1 TX PA_9
+ * UART1 RX PA_10
+ 
+ * UART2 TX PG_14
+ * UART2 RX PG_9
+ 
+ * UART3 TX PJ_8
+ * UART3 RX PJ_9
+ *
+ * 
+ *
 */
 
 
