@@ -30,21 +30,23 @@ void myLedBlue_thread(){
    while (true) {
       digitalWrite(LEDB, !digitalRead(LEDB));   //switch on / off
       ThisThread::sleep_for(1000);
+      Serial.println("Waiting...");
    }
 }
 
 void setup() {
    pinMode(LEDB, OUTPUT);   // LEDB = blue, LEDG or LED_BUILTIN = green, LEDR = red 
-   thread.start(myLedBlue_thread);
+
    Serial.begin(115200);
    Serial1.begin(115200);
+   
+   thread.start(myLedBlue_thread);
 }
 
 void loop() {
-  if (Serial1.available()) {     // If anything comes in Serial1 (pins 0 & 1)
+  if (Serial1.available()) {     // If anything comes in Serial1 
     Serial.write(Serial1.read());   // read it and send it out Serial (USB)
   }
   
 }
-
 
