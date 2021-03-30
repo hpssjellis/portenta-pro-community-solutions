@@ -1,19 +1,6 @@
 /*
  * Code on the Portenta looks something like
  *  Note these Portenta defines
- * 
- * #define PIN_SERIAL_RX (13ul)
- * #define PIN_SERIAL_TX (14ul)
- * 
- * #define SERIAL2_TX      PA_15
- * #define SERIAL2_RX      PF_6
- * 
- * #define SERIAL2_RTS     PF_8
- * #define SERIAL2_CTS     PF_9
- * 
- * 
- * #define SERIAL1_TX      (digitalPinToPinName(PIN_SERIAL_TX))
- * #define SERIAL1_RX      (digitalPinToPinName(PIN_SERIAL_RX))
  *
  * From the schematics for the Portenta https://content.arduino.cc/assets/Pinout-PortentaH7_latest.pdf
  * UART0 TX PA_0
@@ -33,49 +20,69 @@
 */
 
 
+#include <Arduino.h>
+
+
 #include "mbed.h"
 #include "rtos.h"
 
 //using namespace mbed;  // sometimes needed
 using namespace rtos;
 
+int myLastUart = -1;
 Thread thread;
+
+UART mySerial0(PA_0,  PI_9,  NC, NC); //TX, TR, RTS, CTS  NOTE: NC means not connected
+UART mySerial1(PA_9,  PA_10, NC, NC);
+UART mySerial2(PG_14, PG_9,  NC, NC);
+UART mySerial3(PJ_8,  PJ_9,  NC, NC);
+
 
 void myLedBlue_thread(){
    while (true) {
       digitalWrite(LEDB, !digitalRead(LEDB));   //switch on / off
       ThisThread::sleep_for(1000);
+      if (myLastUart >=0) {
+         Serial.println("Last Serial message was from UART:" + String(myLastUart));
+         myLastUart = -1;
+        }
       Serial.println("Waiting...");
    }
 }
 
-void setup() {
-   pinMode(LEDB, OUTPUT);   // LEDB = blue, LEDG or LED_BUILTIN = green, LEDR = red 
 
-   Serial.begin(115200);
-   Serial1.begin(115200);
-   Serial2.begin(115200);
-   Serial3.begin(115200);
-   
-   thread.start(myLedBlue_thread);
+void setup(){
+    pinMode(LEDB, OUTPUT);   // LEDB = blue, LEDG or LED_BUILTIN = green, LEDR = red 
+    Serial.begin(115200);
+    
+    mySerial0.begin(9600);
+    mySerial1.begin(9600);
+    mySerial2.begin(9600);
+    mySerial3.begin(9600);
+    
+    thread.start(myLedBlue_thread);
 }
 
-void loop() {
+void loop(){
+  
+  if (mySerial0.available()) {         // If anything comes in Serial0 
+     Serial.write(mySerial0.read());   // Read it and send it out Serial (USB)
+     myLastUart = 0;                   // Helps to know which UART sent the last message
+  }
 
-  if (Serial.available()) {     // If anything comes in Serial 
-    Serial.write(Serial.read());   // read it and send it out Serial (USB)
+  if (mySerial1.available()) {     
+     Serial.write(mySerial1.read());
+     myLastUart = 1;   
   }
-  if (Serial1.available()) {     // If anything comes in Serial1 
-    Serial.write(Serial1.read());   // read it and send it out Serial (USB)
+
+  if (mySerial2.available()) {     
+     Serial.write(mySerial2.read());
+     myLastUart = 2;   
   }
-  
-  if (Serial2.available()) {     // If anything comes in Serial2 
-    Serial.write(Serial2.read());   // read it and send it out Serial (USB)
+
+  if (mySerial3.available()) {    
+     Serial.write(mySerial3.read()); 
+     myLastUart = 3;  
   }
-  
-  if (Serial3.available()) {     // If anything comes in Serial3 
-    Serial.write(Serial3.read());   // read it and send it out Serial (USB)
-  }
-  
+
 }
-
