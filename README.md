@@ -20,6 +20,7 @@ To find and maintain example code and useful links that work with the Arduino Pr
 9:00 pm CST China  
 10:00 pm JST Japan  
 
+## Come chat for 10 minutes, not suppossed to be a long meeting. Zoom link posted here a few minutes before it starts.
 
 ## Active Zoom Link will go here:  Done for Wed March 24th, 2021!
 
