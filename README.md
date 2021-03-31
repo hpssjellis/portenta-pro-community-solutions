@@ -16,7 +16,7 @@ To find and maintain example code and useful links that work with the Arduino Pr
 9:00 am EST USA/Canada New York/Toronto  
 1:00 pm GMT UK  
 2:00 pm CET Italy  
-6:30 pm IST India  
+6:30 pm IST India  (Sorry this might be 5:30 pm in India, people seem to be coming late)
 9:00 pm CST China  
 10:00 pm JST Japan  
 
