@@ -28,6 +28,10 @@
  *  https://github.com/hpssjellis/arduino-high-school-robotics-course
  * 
  *  Update March 28, 2021
+ *
+ * MbedI2C  myI2C0(PH_8,  PH_7);  //MbedI2C(int sda, int scl);
+ * MbedI2C  myI2C1(PB_7,  PB_6); 
+ * MbedI2C  myI2C2(PH_12, PH_11); 
  * 
  */
 
@@ -43,11 +47,15 @@
 #endif
 
 // works
-U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
+U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);   //(rotation, clock, data [, reset])
 
 // makes it 128 x 32 if you want that
 //U8G2_SSD1306_128X64_ALT0_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE); // SSD1306 and SSD1308Z are compatible
-
+//
+// Not yet tested, for Portenta Breakout Board
+// U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, PH_7, PH_8,    /* reset=*/ U8X8_PIN_NONE);   // I2C0 default //(rotation, clock, data [, reset])
+// U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, PB_6, PB_7,    /* reset=*/ U8X8_PIN_NONE);   // I2C1
+// U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0,  PH_11, PH_12, /* reset=*/ U8X8_PIN_NONE);   // I2C2
  
 void setup(void) {
   u8g2.begin();
