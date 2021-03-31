@@ -22,7 +22,7 @@ To find and maintain example code and useful links that work with the Arduino Pr
 
 ## Come chat for 10 minutes, not suppossed to be a long meeting. Zoom link posted here a few minutes before it starts.
 
-## Active Zoom Link will go here:  Done for Wed March 24th, 2021!
+## Active Zoom Link will go here:  Wed Mar 31 2021 zoom link     https://ca01web.zoom.us/j/67856032030?pwd=eU9GZlEwaGpmL21jUkloaGFmWVJFZz09
 
 
 ## General Rules:
