@@ -2,7 +2,7 @@
  * 
  * DRAFT
  *  Edge Impulse model submitted by 
- *  Dhruv Sheth
+ *  15 y/o Dhruv Sheth
  */
 
 
@@ -207,48 +207,52 @@ void loop()
 
         
     }   // end main classification loop
-    if (result.classification[0].value >= 0.7){  // anger
+    if (result.classification[0].value >= 0.4){  // anger
       // LED_onboard_setRGB(255, 25, 25);          // mainly red
        digitalWrite(LEDR, LOW);
        digitalWrite(LEDG, HIGH);
        digitalWrite(LEDB, HIGH);
     }
+    
+    else if (result.classification[5].value >= 0.4){  // surprise
+      // LED_onboard_setRGB(0, 255, 255);        // blue-green
+     digitalWrite(LEDR, HIGH);
+     digitalWrite(LEDG, LOW);
+     digitalWrite(LEDB, LOW);
+    }
 
-    else if (result.classification[1].value >= 0.7){  // contempt
+
+      else  if (result.classification[3].value >= 0.6){  // happy
+       //LED_onboard_setRGB(25, 25, 255);                // blue
+      digitalWrite(LEDR, HIGH);
+      digitalWrite(LEDG, HIGH);
+      digitalWrite(LEDB, LOW);
+    }
+    else if (result.classification[1].value >= 0.85){  // contempt
        LED_onboard_setRGB(200, 35, 35);          // pinkish
        digitalWrite(LEDR, LOW);
        digitalWrite(LEDG, HIGH);
        digitalWrite(LEDB, LOW);
     }
 
-   else if (result.classification[2].value >= 0.7){  // fear
+   else if (result.classification[2].value >= 0.3){  // fear
       // LED_onboard_setRGB(255, 255, 25);         // red-green
        digitalWrite(LEDR, LOW);
        digitalWrite(LEDG, LOW);
        digitalWrite(LEDB, HIGH);
     }
-      else  if (result.classification[3].value >= 0.7){  // happy
-       //LED_onboard_setRGB(25, 25, 255);          // blue
-      digitalWrite(LEDR, HIGH);
-      digitalWrite(LEDG, HIGH);
-      digitalWrite(LEDB, LOW);
-    }
 
-      else  if (result.classification[4].value >= 0.7){  // sad
+
+      else  if (result.classification[4].value >= 0.3){  // sad
       // LED_onboard_setRGB(25, 255, 25);          // green
      digitalWrite(LEDR, HIGH);
      digitalWrite(LEDG, LOW);
      digitalWrite(LEDB, HIGH);
     }
     
-    else if (result.classification[5].value >= 0.7){  // surprise
-      // LED_onboard_setRGB(255, 255, 255);        // blue-green
-     digitalWrite(LEDR, HIGH);
-     digitalWrite(LEDG, LOW);
-     digitalWrite(LEDB, LOW);
-    }
-        else {                              // nothing
-      // LED_onboard_setRGB(0, 0, 0);        // all off
+
+     else {                                  // nothing
+      // LED_onboard_setRGB(0, 0, 0);        // all Internal LED's off
      digitalWrite(LEDR, HIGH);
      digitalWrite(LEDG, HIGH);
      digitalWrite(LEDB, HIGH);
@@ -279,7 +283,7 @@ void loop()
     
 
     Serial.println();
-   // delay(2);
+    delay(1000);  // slight wait
 }
 
 /**
