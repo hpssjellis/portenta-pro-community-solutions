@@ -1,6 +1,12 @@
 /*
  * 
  * DRAFT
+ *  Edge Impulse model submitted by Dhruv Sheth
+ */
+
+/*
+ * 
+ * DRAFT
  *  Edge Impulse model submitted by 
  *  15 y/o Dhruv Sheth
  */
@@ -21,20 +27,6 @@ CameraClass myCam;
 
 unsigned long myTimer = millis();
 
-
-// These variable must be global
-
-unsigned long previousMillisR;
-int ledStateR = HIGH;
-int myAmountR;
-
-unsigned long previousMillisG;
-int ledStateG = HIGH;
-int myAmountG;
-
-unsigned long previousMillisB;
-int ledStateB = HIGH;
-int myAmountB;
 
 
 
@@ -182,10 +174,8 @@ void loop()
 #endif
     ei_printf("]\n");
 
-// turn off all Portenta LED's
-    // digitalWrite(LEDR, HIGH);
-    // digitalWrite(LEDG, HIGH);
-    // digitalWrite(LEDB, HIGH);
+
+// *********************************** important here ************************************
 
      int myBestClassificationValue = 0.3;  // SET MINIMUM ALLOWED VALUE
      int myBestClassificationNumber = -1;
@@ -193,133 +183,59 @@ void loop()
     for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
         ei_printf("    %s: %.5f\n", result.classification[ix].label, result.classification[ix].value);
         
-       // myBestClassification = max(result.classification[ix].value, myBestClassification);
-       
         if (result.classification[ix].value > myBestClassificationValue ){
            myBestClassificationNumber = ix;                      // find the biggest array value
            myBestClassificationValue = result.classification[ix].value;  
         }
-    
-    //  if (result.classification[ix].value >= 0.6){
-    //     digitalWrite(LEDB, LOW);
-     // }
-
-    //   else if (result.classification[ix].value >= 0.5 && result.classification[ix].value < 0.6){
-    //     digitalWrite(LEDG, LOW);
-    //  }
-      
-    //  else if (result.classification[ix].value >= 0.3 && result.classification[ix].value < 0.5){
-     //    digitalWrite(LEDR, LOW);
-    //  }
-      
 
         
     }   // end main classification loop
 
     if (myBestClassificationNumber >= 0) {
-      if (myBestClassificationNumber == 0) {  // anger
-        // LED_onboard_setRGB(255, 25, 25);     // mainly red
+      if (myBestClassificationNumber == 0) {  // anger    // mainly red
         digitalWrite(LEDR, LOW);
         digitalWrite(LEDG, HIGH);
         digitalWrite(LEDB, HIGH);
        
       } 
-      if (myBestClassificationNumber == 1) {  // contempt
-        // LED_onboard_setRGB(200, 35, 35);     // red-blue
+      if (myBestClassificationNumber == 1) {  // contempt     // red-blue
         digitalWrite(LEDR, LOW);
         digitalWrite(LEDG, HIGH);
         digitalWrite(LEDB, LOW);
           
       } 
-      if (myBestClassificationNumber == 2) {  // fear
-        // LED_onboard_setRGB(255, 255, 25);  // red-green
+      if (myBestClassificationNumber == 2) {  // fear // red-green
         digitalWrite(LEDR, LOW);
         digitalWrite(LEDG, LOW);
         digitalWrite(LEDB, HIGH);
          
       } 
-      if (myBestClassificationNumber == 3) {  // happy
-        //LED_onboard_setRGB(25, 25, 255);    // blue
+      if (myBestClassificationNumber == 3) {  // happy    // blue
         digitalWrite(LEDR, HIGH);
         digitalWrite(LEDG, HIGH);
         digitalWrite(LEDB, LOW);
            
       } 
-      if (myBestClassificationNumber == 4) {  // sad
-       // LED_onboard_setRGB(25, 255, 25);    // green
+      if (myBestClassificationNumber == 4) {  // sad    // green
        digitalWrite(LEDR, HIGH);
        digitalWrite(LEDG, LOW);
        digitalWrite(LEDB, HIGH);     
       
       } 
-      if (myBestClassificationNumber == 5) {   // surprise
-       // LED_onboard_setRGB(0, 255, 255);     // blue-green
+      if (myBestClassificationNumber == 5) {   // surprise     // blue-green
        digitalWrite(LEDR, HIGH);
        digitalWrite(LEDG, LOW);
        digitalWrite(LEDB, LOW);
          
       } 
      
-   } else {  // end if useful values
+   } else {  // end if useful values 
       digitalWrite(LEDR, HIGH);            // all internal LED's off
       digitalWrite(LEDG, HIGH);
       digitalWrite(LEDB, HIGH);
    }
 
-
-   
-    /*
-    if (result.classification[0].value >= 0.5){  // anger
-      // LED_onboard_setRGB(255, 25, 25);          // mainly red
-       digitalWrite(LEDR, LOW);
-       digitalWrite(LEDG, HIGH);
-       digitalWrite(LEDB, HIGH);
-    }
-    
-    else if (result.classification[5].value >= 0.8){  // surprise
-      // LED_onboard_setRGB(0, 255, 255);        // blue-green
-     digitalWrite(LEDR, HIGH);
-     digitalWrite(LEDG, LOW);
-     digitalWrite(LEDB, LOW);
-    }
-
-
-      else  if (result.classification[3].value >= 0.8){  // happy
-       //LED_onboard_setRGB(25, 25, 255);                // blue
-      digitalWrite(LEDR, HIGH);
-      digitalWrite(LEDG, HIGH);
-      digitalWrite(LEDB, LOW);
-    }
-    else if (result.classification[1].value >= 0.5){  // contempt
-      // LED_onboard_setRGB(200, 35, 35);          // pinkish
-       digitalWrite(LEDR, LOW);
-       digitalWrite(LEDG, HIGH);
-       digitalWrite(LEDB, LOW);
-    }
-
-   else if (result.classification[2].value >= 0.2){  // fear
-      // LED_onboard_setRGB(255, 255, 25);         // red-green
-       digitalWrite(LEDR, LOW);
-       digitalWrite(LEDG, LOW);
-       digitalWrite(LEDB, HIGH);
-    }
-
-
-      else  if (result.classification[4].value >= 0.2){  // sad
-      // LED_onboard_setRGB(25, 255, 25);          // green
-     digitalWrite(LEDR, HIGH);
-     digitalWrite(LEDG, LOW);
-     digitalWrite(LEDB, HIGH);
-    }
-    
-
-     else {                                  // nothing
-      // LED_onboard_setRGB(0, 0, 0);        // all Internal LED's off
-     digitalWrite(LEDR, HIGH);
-     digitalWrite(LEDG, HIGH);
-     digitalWrite(LEDB, HIGH);
-    }
-    */                    
+         
     
 #if EI_CLASSIFIER_HAS_ANOMALY == 1
     ei_printf("    anomaly score: %.3f\n", result.anomaly);
@@ -342,11 +258,14 @@ void loop()
 
 */
 
-    
-
     Serial.println();
-    delay(1000);  // slight wait only for viewing serial print
+   // delay(1000);  // slight wait only for viewing serial print
 }
+
+
+
+
+
 
 /**
  * @brief      Printf function uses vsnprintf and output using Arduino Serial
@@ -364,61 +283,5 @@ void ei_printf(const char *format, ...) {
     if (r > 0) {
         Serial.write(print_buf);
     }
-
-
- // unsigned long myNow = millis();
- //  LED_onboard_setRGB(25, 25, 255); // example blue
-
- // if (myNow - myTimer >= 1000){   // color change delay 1000 = 1 second
-  //   myTimer = myNow;
- //    myAmountR = 2;  //rand()% 256;
- //    myAmountG = 2;  //rand()% 256;
- //    myAmountB =  rand()% 256;   
-  //   Serial.println("Red:"+String(myAmountR) + ", Green:"+ String(myAmountG) + ", Blue:"+ String(myAmountB));
- // }
-
-
- 
- // LED_onboard_setRGB( myAmountR, myAmountG, myAmountB);
-
-    
-}   // end main loop
-
-
-
-
-// helper utilities to make onboard LED's 
-// act like they can do PWM
-// I should use a thread, but too lazy
-
-void LED_onboard_setRGB(int colorR, int colorG, int colorB){
-
-   LED_onboard_analogWrite(LEDR, colorR, previousMillisR, ledStateR);
-   LED_onboard_analogWrite(LEDG, colorG, previousMillisG, ledStateG);
-   LED_onboard_analogWrite(LEDB, colorB, previousMillisB, ledStateB);
 }
-
-void LED_onboard_analogWrite(int myPin, int myPWM, unsigned long &myMillis, int &myState){
-  unsigned long currentMillis = micros();
-  
-  if (myPWM > 255){myPWM = 255;}
-  if (myPWM < 0){myPWM = 0;}
-  
-  if (myState == LOW){      
-     if(currentMillis - myMillis >= myPWM){
-        myState = HIGH;
-        digitalWrite(myPin, myState);  
-        myMillis = currentMillis;
-      }     
-  } else { 
-     if(currentMillis - myMillis >= 255-myPWM){
-        myState = LOW;
-        digitalWrite(myPin, myState);    
-        myMillis = currentMillis;  
-     }
-  } 
-}
-
-
-
 
