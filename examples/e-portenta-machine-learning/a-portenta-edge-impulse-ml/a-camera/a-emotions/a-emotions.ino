@@ -187,11 +187,19 @@ void loop()
     // digitalWrite(LEDG, HIGH);
     // digitalWrite(LEDB, HIGH);
 
-
+     int myBestClassificationValue = 0.3;  // SET MINIMUM ALLOWED VALUE
+     int myBestClassificationNumber = -1;
     // human-readable predictions
     for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
         ei_printf("    %s: %.5f\n", result.classification[ix].label, result.classification[ix].value);
-
+        
+       // myBestClassification = max(result.classification[ix].value, myBestClassification);
+       
+        if (result.classification[ix].value > myBestClassificationValue ){
+           myBestClassificationNumber = ix;                      // find the biggest array value
+           myBestClassificationValue = result.classification[ix].value;  
+        }
+    
     //  if (result.classification[ix].value >= 0.6){
     //     digitalWrite(LEDB, LOW);
      // }
@@ -207,14 +215,68 @@ void loop()
 
         
     }   // end main classification loop
-    if (result.classification[0].value >= 0.4){  // anger
+
+    if (myBestClassificationNumber >= 0) {
+      if (myBestClassificationNumber == 0) {  // anger
+        // LED_onboard_setRGB(255, 25, 25);     // mainly red
+        digitalWrite(LEDR, LOW);
+        digitalWrite(LEDG, HIGH);
+        digitalWrite(LEDB, HIGH);
+       
+      } 
+      if (myBestClassificationNumber == 1) {  // contempt
+        // LED_onboard_setRGB(200, 35, 35);     // red-blue
+        digitalWrite(LEDR, LOW);
+        digitalWrite(LEDG, HIGH);
+        digitalWrite(LEDB, LOW);
+          
+      } 
+      if (myBestClassificationNumber == 2) {  // fear
+        // LED_onboard_setRGB(255, 255, 25);  // red-green
+        digitalWrite(LEDR, LOW);
+        digitalWrite(LEDG, LOW);
+        digitalWrite(LEDB, HIGH);
+         
+      } 
+      if (myBestClassificationNumber == 3) {  // happy
+        //LED_onboard_setRGB(25, 25, 255);    // blue
+        digitalWrite(LEDR, HIGH);
+        digitalWrite(LEDG, HIGH);
+        digitalWrite(LEDB, LOW);
+           
+      } 
+      if (myBestClassificationNumber == 4) {  // sad
+       // LED_onboard_setRGB(25, 255, 25);    // green
+       digitalWrite(LEDR, HIGH);
+       digitalWrite(LEDG, LOW);
+       digitalWrite(LEDB, HIGH);     
+      
+      } 
+      if (myBestClassificationNumber == 5) {   // surprise
+       // LED_onboard_setRGB(0, 255, 255);     // blue-green
+       digitalWrite(LEDR, HIGH);
+       digitalWrite(LEDG, LOW);
+       digitalWrite(LEDB, LOW);
+         
+      } 
+     
+   } else {  // end if useful values
+      digitalWrite(LEDR, HIGH);            // all internal LED's off
+      digitalWrite(LEDG, HIGH);
+      digitalWrite(LEDB, HIGH);
+   }
+
+
+   
+    /*
+    if (result.classification[0].value >= 0.5){  // anger
       // LED_onboard_setRGB(255, 25, 25);          // mainly red
        digitalWrite(LEDR, LOW);
        digitalWrite(LEDG, HIGH);
        digitalWrite(LEDB, HIGH);
     }
     
-    else if (result.classification[5].value >= 0.4){  // surprise
+    else if (result.classification[5].value >= 0.8){  // surprise
       // LED_onboard_setRGB(0, 255, 255);        // blue-green
      digitalWrite(LEDR, HIGH);
      digitalWrite(LEDG, LOW);
@@ -222,20 +284,20 @@ void loop()
     }
 
 
-      else  if (result.classification[3].value >= 0.6){  // happy
+      else  if (result.classification[3].value >= 0.8){  // happy
        //LED_onboard_setRGB(25, 25, 255);                // blue
       digitalWrite(LEDR, HIGH);
       digitalWrite(LEDG, HIGH);
       digitalWrite(LEDB, LOW);
     }
-    else if (result.classification[1].value >= 0.85){  // contempt
-       LED_onboard_setRGB(200, 35, 35);          // pinkish
+    else if (result.classification[1].value >= 0.5){  // contempt
+      // LED_onboard_setRGB(200, 35, 35);          // pinkish
        digitalWrite(LEDR, LOW);
        digitalWrite(LEDG, HIGH);
        digitalWrite(LEDB, LOW);
     }
 
-   else if (result.classification[2].value >= 0.3){  // fear
+   else if (result.classification[2].value >= 0.2){  // fear
       // LED_onboard_setRGB(255, 255, 25);         // red-green
        digitalWrite(LEDR, LOW);
        digitalWrite(LEDG, LOW);
@@ -243,7 +305,7 @@ void loop()
     }
 
 
-      else  if (result.classification[4].value >= 0.3){  // sad
+      else  if (result.classification[4].value >= 0.2){  // sad
       // LED_onboard_setRGB(25, 255, 25);          // green
      digitalWrite(LEDR, HIGH);
      digitalWrite(LEDG, LOW);
@@ -257,7 +319,7 @@ void loop()
      digitalWrite(LEDG, HIGH);
      digitalWrite(LEDB, HIGH);
     }
-                        
+    */                    
     
 #if EI_CLASSIFIER_HAS_ANOMALY == 1
     ei_printf("    anomaly score: %.3f\n", result.anomaly);
@@ -283,7 +345,7 @@ void loop()
     
 
     Serial.println();
-    delay(1000);  // slight wait
+    delay(1000);  // slight wait only for viewing serial print
 }
 
 /**
