@@ -22,9 +22,16 @@ To find and maintain example code and useful links that work with the Arduino Pr
 
 ## Come chat for 10 minutes, not suppossed to be a long meeting. Zoom link posted here a few minutes before it starts.
 
-## Active Zoom Link will go here:  Wed Mar 31 2021 zoom link  DONE: First lesson. We are on daylight savings time and other people are not. I will have to figure that out next week. Sorry!
+## Active Zoom Link will go here:  Wed Mar 31 2021 zoom link  https://ca01web.zoom.us/j/61566718742?pwd=Z2hQNVlOaVR4MFJjVnovaENRQXpCZz09
+
+
+
 
 ## General Rules:
+
+
+
+
 1. I am a teacher. I will remove any inappropriate behaviour without warning!
 1. Meeting may continue until 7:00 am PST but only if needed. (Meeting as short and sweet as possible)
 1. Zoom Image taken at 6:15 PST (disable video if you don't want to be in the image)
