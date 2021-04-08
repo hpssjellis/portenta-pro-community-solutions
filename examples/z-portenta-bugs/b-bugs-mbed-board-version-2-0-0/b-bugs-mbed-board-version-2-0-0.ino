@@ -23,10 +23,10 @@
  * Serial print from M7 core works
  * On board LED works on both PortentaH7 M7 and M4 cores
  * Serial.println on M4 core does not crash program (Need RPI to send to M7)
- * MBED on both M7 and M4 cores
- * using the mbed namspace
- *
- *
+ * MBED on both M7 and M4 cores works
+ * using the mbed namspace works
+ * using the rtos namespace works
+ * using RPC to send information from the M4 core to the M7 core works.
  *
  *
  *
