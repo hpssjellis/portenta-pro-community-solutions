@@ -3,6 +3,30 @@
  *
  *
  *
+ * Possible some issues with my Machine learning example programs
+ * I will have to test on another computer. The following single file Tensorflow Lite program did not run
+ * https://github.com/hpssjellis/my-examples-for-the-arduino-portentaH7/blob/master/m09-Tensoflow/b01_makerML_hello_world.ino
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  *
  *
  *
