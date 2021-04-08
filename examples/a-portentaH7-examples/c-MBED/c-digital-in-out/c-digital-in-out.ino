@@ -13,7 +13,7 @@
 #include "mbed.h"
 using namespace mbed;
 
-DigitalInOut myPin(LED1);  // Any pin
+DigitalInOut myPin(LED3);  // LED`1=red, LED2=green, LED3=blue
 
 void setup() {
     Serial.begin(115200);    
