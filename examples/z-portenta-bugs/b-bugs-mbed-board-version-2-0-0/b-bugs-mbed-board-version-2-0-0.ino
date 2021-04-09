@@ -1,14 +1,16 @@
 /*
  *  No Issues yet. March 8th, 2021
  *
- *
+ * I was using the multiboard install that looks like it is now deprecated
+ * I have now installed the single Portenta board version 2.0.0 which worked great on Ubuntu
  *
  * Possible some issues with my Machine learning example programs
  * I will have to test on another computer. The following single file Tensorflow Lite program did not run
  * https://github.com/hpssjellis/my-examples-for-the-arduino-portentaH7/blob/master/m09-Tensoflow/b01_makerML_hello_world.ino
  *
- *
- *
+ * presently having this error but only on windows. (mar8th, 2021)
+ * arm-none-eabi-gcc: error: CreateProcess: No such file or directory
+
  *
  *
  *
