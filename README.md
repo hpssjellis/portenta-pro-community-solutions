@@ -15,9 +15,11 @@ To find and maintain example code and useful links that work with the Arduino Pr
 6:00 am PST USA/Canada California/Vancouver  
  
 
-## Come chat for 10 minutes, not suppossed to be a long meeting. Zoom link posted here a few minutes before it starts.
+Come chat for 10 minutes, not suppossed to be a long meeting. Zoom link posted here a few minutes before it starts.
 
-## Active Zoom Link will go here:  Not happening this Wed April 14th. I need to sleep. Sorry. Touch base on Twitter https://twitter.com/rocksetta
+# Not happening this Wed April 14th. I need to sleep. 
+
+Sorry. Touch base on Twitter https://twitter.com/rocksetta
 
 
 
