@@ -13,16 +13,13 @@ To find and maintain example code and useful links that work with the Arduino Pr
 6:00 am PST zoom link posted each Wednesday if I get up!   
 
 6:00 am PST USA/Canada California/Vancouver  
-9:00 am EST USA/Canada New York/Toronto  
-1:00 pm GMT UK  
-2:00 pm CET Italy  
-6:30 pm IST India  (Sorry this might be 5:30 pm in India, people seem to be coming late)
-9:00 pm CST China  
-10:00 pm JST Japan  
+ 
 
 ## Come chat for 10 minutes, not suppossed to be a long meeting. Zoom link posted here a few minutes before it starts.
 
-## Active Zoom Link will go here:  Done for April 7th 2021
+## Active Zoom Link will go here:  Not happening this Wed April 14th. I need to sleep. Sorry. Touch base on Twitter https://twitter.com/rocksetta
+
+
 
 
 
