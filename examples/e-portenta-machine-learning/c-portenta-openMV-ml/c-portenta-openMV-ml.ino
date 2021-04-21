@@ -1,56 +1,42 @@
-/* 
+/*
+*
+*
+* ******************************************************************
+*
+* Well explained by the Arduino Pro Tutorials:
+*
+* https://www.arduino.cc/pro/tutorials/portenta-h7/por-openmv-bt
+*
+* Note: The above can be installed as a proper Arudino library
+* search for "tutorial" in the library manager and install the
+*
+* Arduino_Pro_Tutorials
+*
+*
+* My Portenta Video playlist at:
+* https://www.youtube.com/playlist?list=PL57Dnr1H_egtm0pi-okmG0iE_X5dROaLw
+*
+* *******************************************************************
+
 *  
 *
 *
 * GNU GENERAL PUBLIC LICENSE
 * Use at your own risk.
-************************************************ Important stuff if needed ****************************************
+*
 *
 *  openMV is a completely different IDE that needs to be installed
 *  Go to for information
 *
 *  https://openmv.io/
 *
-********************************************************** end ****************************************************
-*
-*
-*  March, 2020
-*  by Jeremy Ellis
-*  Twitter @rocksetta
-*  Website https://www.rocksetta.com
-*/
-
-
-
-
-
-
-
-
-/*
-* Clickable links for helpful information
-* By @rocksetta
-* March, 2021
-* GNU GENERAL PUBLIC LICENSE
-* Use at your own risk.
-*
-*
-*
-*  Artduino Pro Links:
-*
-*  https://store.arduino.cc/usa/portenta-h7
-*  https://forum.arduino.cc/index.php?board=148.0
-*  https://www.arduino.cc/pro/tutorials/portenta-h7
-*
-*  Rocksetta links:
-* 
-*  https://twitter.com/rocksetta
-*  https://github.com/hpssjellis/portenta-pro-community-solutions
-*  https://github.com/hpssjellis/my-examples-for-the-arduino-portentaH7
-*  https://github.com/hpssjellis/arduino-high-school-robotics-course
-*  https://www.youtube.com/playlist?list=PL57Dnr1H_egtm0pi-okmG0iE_X5dROaLw
 *
 *
 *
 */
+
+
+
+
+
 
