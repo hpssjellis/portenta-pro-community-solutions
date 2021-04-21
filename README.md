@@ -17,7 +17,7 @@ To find and maintain example code and useful links that work with the Arduino Pr
 
 Come chat for 10 minutes, not suppossed to be a long meeting. Zoom link posted here a few minutes before it starts.
 
-# Not happening this Wed April 14th. I need to sleep. 
+# Not happening this Wed April 20th. I am still too tireds. Darn day job!
 
 Sorry. Touch base on Twitter https://twitter.com/rocksetta
 
