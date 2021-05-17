@@ -23,10 +23,10 @@ To find and maintain example code and useful links that work with the Arduino Pr
 .
 
 
+On an aside note:
 
 
-
-# LoRA/Murata Module:
+### LoRA/Murata Module:
 
 Super exciting is the ability to use the LoRa/Murata module directly on the Portenta that has the LoRa Vision Shield. This module is like a 3rd core that just runs the LoRa interface. Made to work with the MKRWAN library, but that gives no access to LoRa only LoRaWan.
 
