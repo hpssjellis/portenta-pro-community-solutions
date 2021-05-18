@@ -15,7 +15,7 @@
     "type": "git",
     "url": "https://github.com/hpssjellis/portenta-pro-community-solutions"
   },
-  "version":"0.1.2",
+  "version":"0.2.0",
   "frameworks": "arduino",
   "platforms": "*",
   "export": {
