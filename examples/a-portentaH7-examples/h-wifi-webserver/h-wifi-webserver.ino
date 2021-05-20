@@ -107,7 +107,7 @@ void loop() {
             // the content of the HTTP response follows the header:
             client.print("<input type=button value='LED_BUILTIN Off' onclick='{location=\"/H\"}'>");
             client.print("<input type=button value='LED_BUILTIN On' onclick='{location=\"/L\"}'>");
-            client.print("<br> AnalogRead(A1); = "+ String(x1) );  // x to 3 decimal places
+            client.print("<br> AnalogRead(A1); = "+ String(x1) );  
 
             // The HTTP response ends with another blank line:
             client.println();    
