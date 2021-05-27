@@ -40,11 +40,9 @@
 
 
 
-
-
-char ssid[] = SECRET_SSID;        // your network SSID (name)
-char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
-int keyIndex = 0;                 // your network key Index number (needed only for WEP)
+char ssid[] = SECRET_SSID;    // Changing the secret strings to a character array
+char pass[] = SECRET_PASS;    
+int keyIndex = 0;              
 
 int status = WL_IDLE_STATUS;
 WiFiServer server(80);
