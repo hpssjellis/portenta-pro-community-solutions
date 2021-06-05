@@ -19,10 +19,10 @@ It is expected that users will have some of the following:
 
 Must have: $103.47 USD (Arduino PortentaH7)[https://store.arduino.cc/usa/portenta-h7] 
 
-$47.15 USD (Ethernet Vision Shield)[https://store.arduino.cc/usa/portenta-vision-shield] 
+May have: $47.15 USD (Ethernet Vision Shield)[https://store.arduino.cc/usa/portenta-vision-shield] 
 
-$63.00 USD (LoRa Vision Shield)[https://store.arduino.cc/usa/portenta-vision-shield-lora]
+May have: $63.00 USD (LoRa Vision Shield)[https://store.arduino.cc/usa/portenta-vision-shield-lora]
 
-$45.99 USD (Portenta Breakout board)[https://store.arduino.cc/usa/portenta-breakout]
+May have: $45.99 USD (Portenta Breakout board)[https://store.arduino.cc/usa/portenta-breakout]
 
 Expensive but powerful.
