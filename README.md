@@ -3,7 +3,8 @@ Portenta Pro Community Solutions and Links.
 
 Started March 20st 2021
 
-Note: This is a downloadable zippable Arduino library. Install using the library manager --> add .zip file
+# Install from the Arduino IDE library manager --> serach for "Portenta" Install the "Portenta Pro Coummnity Solutions"
+
 
 ## Goal
 
