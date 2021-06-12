@@ -3,16 +3,19 @@
  *
  * GNU GENERAL PUBLIC LICENSE
  * Use at your own risk.
+ * 
  ************************************************ Important stuff if needed ****************************************
  *
- *  Your need a sensor that is a variable resistor. Most sensors that just have 2 wires coming from them are variable resistors.
+ *  You need a sensor that is a variable resistor. 
+ *  Most sensors that just have 2 wires coming from them are variable resistors.
+ *
+ *  GND to any resistor to A0
+ *  3V3 to 2 wire Sensor to A0
+ *
  *
  ********************************************************** end ****************************************************
  *
  *
- * GND to resistor (try different resistors I used a 5 k ohm, larger resistor larger range of values)
- * resistor to both A0 and a 2 prong sensor (such as a photoresistor)
- * other side of 2 prong sensor to 3V3
  *   
  *  By Jeremy Ellis twitter @rocksetta
  *  Webpage http://rocksetta.com
@@ -27,17 +30,16 @@
 #include <Arduino.h>  // only needed for https://platformio.org/
 
 void setup(){  
-  
+  // 8:0-255   10: 0-1023,  12 : 0-4095, 16 : 0-65535
+  //analogReadResolution(10);   // 10 default Range 0-1023
   Serial.begin(115200);
   
 }
 
-
 void loop() {
 
   Serial.println("Max = 4095, Analog Read A0: " + String(analogRead(A0)) );
-
-  delay(3000);    // wait a bit
+  delay(1000);    // wait a bit
                   
 }
 
@@ -70,4 +72,3 @@ void loop() {
 *
 *
 */
-
