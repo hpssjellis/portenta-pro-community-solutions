@@ -38,7 +38,7 @@ void setup(){
 
 void loop() {
 
-  Serial.println("Max = 4095, Analog Read A0: " + String(analogRead(A0)) );
+  Serial.println("Resolution 10, Max = 1023, Analog Read A0: " + String(analogRead(A0)) );
   delay(1000);    // wait a bit
                   
 }
