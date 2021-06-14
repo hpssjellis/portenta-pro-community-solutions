@@ -6,7 +6,7 @@
 ************************************************ Important stuff if needed ****************************************
 *
 * Must connect the short wire of an LED to ground (GND)
-* and the long wire of the LED to a digital output D6
+* and the long wire of the LED to a digital output D5
 *
 ********************************************************** end ****************************************************
 *
