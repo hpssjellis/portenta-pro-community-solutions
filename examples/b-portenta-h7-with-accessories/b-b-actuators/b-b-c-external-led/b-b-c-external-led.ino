@@ -5,7 +5,8 @@
 * Use at your own risk.
 ************************************************ Important stuff if needed ****************************************
 *
-* Must connect the short wire of an LED to ground (GND)
+* Must connect the short wire of an LED to a small ohm resistor
+* connect the resistor to ground (GND)
 * and the long wire of the LED to a digital output D5
 *
 ********************************************************** end ****************************************************
