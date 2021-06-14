@@ -1,4 +1,5 @@
-
+# how to easily use the Serial1 to communicate data between arduino's computer and the Portenta Cores. 
+### Problem: RPI works great but is fairly slow, what could be faster for communicating data between the cores if needed
 
 ## Communicate values using serial1, uart, tx rx
 
