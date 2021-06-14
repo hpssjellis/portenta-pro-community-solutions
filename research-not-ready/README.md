@@ -31,7 +31,7 @@ Stuff that isn't working yet, or needs to be converted from ESP or Particle
 
 ### Comunication Not Yet Done
 1. I2C communication is in sensor category
-2. Serial comm of variables?
+2. Serial comm of variables?    ![serial-values.md](serial-values.md)
 3. Helium/The Things Network LoRa connectivity
 4. MQTT Broker
 5. MQTT clients
