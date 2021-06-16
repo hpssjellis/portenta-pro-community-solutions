@@ -26,3 +26,20 @@ May have: $63.00 USD [LoRa Vision Shield](https://store.arduino.cc/usa/portenta-
 May have: $45.99 USD [Portenta Breakout board](https://store.arduino.cc/usa/portenta-breakout)   
 
 Expensive but powerful.
+
+
+
+## Other Files
+
+
+[research-not-ready/README.md](research-not-ready/README.md)
+
+[murata-lora-module.md](murata-lora-module.md)
+
+[pricelist.md](pricelist.md)
+
+[notes.md](notes.md)
+
+
+
+
