@@ -118,23 +118,25 @@ Note: excellent cheaper choices that do not offer as much but can do some of the
 
 
 
-### Platforms to consider
+### Platforms to consider. Note: These are mainly all free
 
 1. [Regular Arduino IDE](https://www.arduino.cc/en/software)
 
 1. New [Arduino (PRO) IDE](https://www.arduino.cc/pro/arduino-pro-ide) An updated but has a few bugs of the old IDE
 
-1. [Arduino Cloud IDE](https://store.arduino.cc/digital/create)
+1. [Arduino Cloud IDE](https://store.arduino.cc/digital/create) From Free and from $3-$24 a month
 
 1. [platformIO](https://platformio.org/)  uses Visual Studio Code
 
 1. C++ compiler - (Possibility with Gitpod) My one here (not yet easy) [https://github.com/hpssjellis/my-gitpod-of-edge-impulse](https://github.com/hpssjellis/my-gitpod-of-edge-impulse)
 
-1. [OpenMV-micropython](https://openmv.io/)
+1. [OpenMV-micropython](https://openmv.io/) Free for Portenta and the Nano33BleSense
 
-1. [Circuit Python](https://circuitpython.org/) (not yet available for Portenta)
+1. [Lauterbach TRACE32](https://www.arduino.cc/pro/tutorials/portenta-h7/por-ard-trace32) Professional Debugger Free for Portenta and the Nano33BleSense
 
-1. [Visuino](https://www.visuino.com/login) (Not yet available for the Portenta)
+1. [Circuit Python](https://circuitpython.org/) (not yet available for Portenta) Free
+
+1. [Visuino](https://www.visuino.com/login) (Not yet available for the Portenta)  $39 one time fee but for only 4 months of updates.
 
 
 
