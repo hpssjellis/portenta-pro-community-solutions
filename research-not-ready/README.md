@@ -3,6 +3,21 @@ Stuff that isn't working yet, or needs to be converted from ESP or Particle
 # needs work
 
 
+
+## not yet sorted
+
+DAC
+SOS
+IFTTT
+transistorGPS
+Accelerometer
+FSLP touch
+rangefinder
+using putty
+websocket
+
+
+
 ### sensors Not Yet Done
 
 1. Range Finder [range-finder-draft01.ino](range-finder-draft01.ino)
@@ -22,7 +37,7 @@ Stuff that isn't working yet, or needs to be converted from ESP or Particle
 
 ### Actuators not yet done
 
-1. Small Dual Motor Driver
+1. DC Small Dual Motor Driver
 2. Large Motor Driver
 3. Stepper Motor
 4. FSLP - variable touch sensor
