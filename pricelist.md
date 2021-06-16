@@ -102,28 +102,39 @@ Note: excellent cheaper choices that do not offer as much but can do some of the
 
 1. [Seeduino XAIO 7](https://www.seeedstudio.com/Seeeduino-XIAO-Arduino-Microcontroller-SAMD21-Cortex-M0+-p-4426.html) $7.00 USD really cheap but can't do much combined abilities
 
-1. [Nano 33 Ble Sense] (https://store.arduino.cc/usa/nano-33-ble-sense) $31.10 USD With lots of builtin sensors including accelrometer thi sboard can do a  lot
+1. [Nano 33 Ble Sense](https://store.arduino.cc/usa/nano-33-ble-sense) $31.10 USD With lots of builtin sensors including accelrometer thi sboard can do a  lot
 
 1. [Nano RP2040 Connect](https://store.arduino.cc/usa/nano-rp2040-connect-with-headers) $25.50 first ever raspberry Pi with Wifi and BLE by Arduino. This board has a lot of promise, just to new for me to have everything working.
 
+
+
+
+
+
 ### Lots of other boards that you might consider working with
 
+
+
+
+
+
 ### Platforms to consider
-1. Regular Arduino IDE
 
-1. New Arduino (PRO) IDE
+1. [Regular Arduino IDE](https://www.arduino.cc/en/software)
 
-1. Arduino Cloud IDE
+1. New [Arduino (PRO) IDE](https://www.arduino.cc/pro/arduino-pro-ide) An updated but has a few bugs of the old IDE
 
-1. platformIO
+1. [Arduino Cloud IDE](https://store.arduino.cc/digital/create)
 
-1. C++ compiler - (Possibility with Gitpod)
+1. [platformIO](https://platformio.org/)  uses Visual Studio Code
 
-1. OpenMV-micropython
+1. C++ compiler - (Possibility with Gitpod) My one here (not yet easy) [https://github.com/hpssjellis/my-gitpod-of-edge-impulse](https://github.com/hpssjellis/my-gitpod-of-edge-impulse)
 
-1. Circuit Python (not yet available for Portenta)
+1. [OpenMV-micropython](https://openmv.io/)
 
-1. Visuino (Not yet available for the Portenta)
+1. [Circuit Python](https://circuitpython.org/) (not yet available for Portenta)
+
+1. [Visuino](https://www.visuino.com/login) (Not yet available for the Portenta)
 
 
 
