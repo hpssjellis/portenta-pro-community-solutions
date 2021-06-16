@@ -15,9 +15,26 @@ Aug 2017 USD or CDN costs
 A work in progress
 
 
+
+
+It is expected that users will have some of the following:
+
+Must have: $103.47 USD [Arduino PortentaH7](https://store.arduino.cc/usa/portenta-h7)   
+
+May have: $47.15 USD [Ethernet Vision Shield](https://store.arduino.cc/usa/portenta-vision-shield)   
+
+May have: $63.00 USD [LoRa Vision Shield](https://store.arduino.cc/usa/portenta-vision-shield-lora)   
+
+May have: $45.99 USD [Portenta Breakout board](https://store.arduino.cc/usa/portenta-breakout)   
+
+
+
+
 ### Per two students
 
-1. [Photon Kit](https://store.particle.io/products/photon-kit)
+
+
+1. $103.47 USD [Arduino PortentaH7](https://store.arduino.cc/usa/portenta-h7)   
 
 1. [Elenco-SC-750-Snap-Circuits-Extreme](https://www.amazon.ca/Elenco-SC-750-Snap-Circuits-Extreme/dp/B0002AHQWS)
 
@@ -81,6 +98,32 @@ x 15 for a class of 30 student Total =
 
 
 
+Note: excellent cheaper choices that do not offer as much but can do some of the course are:
+
+1. [Seeduino XAIO 7](https://www.seeedstudio.com/Seeeduino-XIAO-Arduino-Microcontroller-SAMD21-Cortex-M0+-p-4426.html) $7.00 USD really cheap but can't do much combined abilities
+
+1. [Nano 33 Ble Sense] (https://store.arduino.cc/usa/nano-33-ble-sense) $31.10 USD With lots of builtin sensors including accelrometer thi sboard can do a  lot
+
+1. [Nano RP2040 Connect](https://store.arduino.cc/usa/nano-rp2040-connect-with-headers) $25.50 first ever raspberry Pi with Wifi and BLE by Arduino. This board has a lot of promise, just to new for me to have everything working.
+
+### Lots of other boards that you might consider working with
+
+### Platforms to consider
+1. Regular Arduino IDE
+
+1. New Arduino (PRO) IDE
+
+1. Arduino Cloud IDE
+
+1. platformIO
+
+1. C++ compiler - (Possibility with Gitpod)
+
+1. OpenMV-micropython
+
+1. Circuit Python (not yet available for Portenta)
+
+1. Visuino (Not yet available for the Portenta)
 
 
 
