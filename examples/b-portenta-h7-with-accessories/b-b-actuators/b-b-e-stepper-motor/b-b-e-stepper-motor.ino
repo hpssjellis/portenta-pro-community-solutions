@@ -2,6 +2,9 @@
 // By Jeremy Ellis
 // MIT license
 
+// For connectionsse this site until a new one is made
+//   https://github.com/hpssjellis/particle.io-photon-high-school-robotics/tree/master/a12-stepper-motor
+
 // Connect your stepper driver and run the program
 // Change the direction and see if it works.
 // Then write your own code to control the stepper
