@@ -10,6 +10,8 @@
 // This program will just tell you if  the connections are working
 // See https://www.pololu.com/product/1451 for assistance
 
+// On motor driver board LED goes red for one direction and green for the other
+
 void setup() {
     pinMode(D3, OUTPUT);   // digital 0 to 1
     pinMode(D4, OUTPUT);   // PWM 0 to 255
