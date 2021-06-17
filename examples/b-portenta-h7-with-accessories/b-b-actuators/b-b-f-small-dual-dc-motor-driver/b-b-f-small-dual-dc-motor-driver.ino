@@ -4,6 +4,7 @@
 
 
 // info here until improved https://github.com/hpssjellis/particle.io-photon-high-school-robotics/tree/master/a11-dc-motor-drivers
+//Note: on above A4 was changed to Portenta D5 which allows PWM
 
 
 
