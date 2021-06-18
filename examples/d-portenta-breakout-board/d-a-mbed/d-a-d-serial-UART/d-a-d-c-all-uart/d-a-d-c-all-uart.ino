@@ -32,7 +32,7 @@ using namespace rtos;
 int myLastUart = -1;
 Thread thread;
 
-UART mySerial0(PA_0,  PI_9,  NC, NC); //TX, RX, RTS, CTS  NOTE: NC means not connected
+UART mySerial0(PA_0,  PI_9,  NC, NC); //TX, RX, RTS, CTC  NOTE: NC means not connected
 UART mySerial1(PA_9,  PA_10, NC, NC);
 UART mySerial2(PG_14, PG_9,  NC, NC);
 UART mySerial3(PJ_8,  PJ_9,  NC, NC);
