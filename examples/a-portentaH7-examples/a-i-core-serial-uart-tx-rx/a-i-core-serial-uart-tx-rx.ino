@@ -1,6 +1,8 @@
 // Easy Dual Core program setup
 
 // Need to connect pin TX D14 and RX D13 together.
+// USing Serial1 on both cores only works for sending simple data.
+// For complex data we need the breakout board, examples for ArduinoJSON and SerialTransfer there.
 
 
 #include <Arduino.h>
