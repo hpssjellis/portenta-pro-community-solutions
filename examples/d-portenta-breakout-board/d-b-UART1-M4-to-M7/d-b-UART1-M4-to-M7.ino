@@ -1,6 +1,7 @@
 /* 
 
 Portenta Serial UART
+similar code using Serial1  is at  a-i-core-serial-uart-tx-rx.ino
 // Need to connect pin TX D14 and RX D13 together.
 // Passing data between the cores both using UART1 works for simple transfers but does not work for 
 // complex transfers, which need UART0 and UART1 which needs the breakout board.
