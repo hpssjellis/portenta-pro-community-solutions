@@ -3,7 +3,7 @@ Portenta Pro Community Solutions and Links.
 
 Started March 20st 2021
 
-# Install from the Arduino IDE library manager --> search for "Portenta", then install the "Portenta Pro Coummnity Solutions"
+## Install from the Arduino IDE library manager --> search for "Portenta", then install the "Portenta Pro Coummnity Solutions"
 
 Install it as a standalone or with the few supporting libraries. Either way works fine.
 
@@ -13,7 +13,7 @@ Install it as a standalone or with the few supporting libraries. Either way work
 To find and maintain lots of example code and useful links that work with the Arduino Pro Portenta Series of Boards and Shields
 
 
-
+## School curriculum at https://github.com/hpssjellis/high-school-robotics-tinyml-machine-learning-curriculum
 
 It is expected that users will have some of the following:
 
