@@ -24,10 +24,10 @@ void setup() {
 
 void loop() {
   digitalWrite(LED_BUILTIN, HIGH);  // Internal LED off
-  digitalWrite(D5, HIGH);           // Eternal  LED on
+  digitalWrite(D5, HIGH);           // External  LED on
   delay(1000);                      // wait for a second
   digitalWrite(LED_BUILTIN, LOW);   // Internal LED on
-  digitalWrite(D5, LOW);           // Eternal  LED off
+  digitalWrite(D5, LOW);           // External  LED off
   delay(3000);                      // wait 3 seconds
 }
 
