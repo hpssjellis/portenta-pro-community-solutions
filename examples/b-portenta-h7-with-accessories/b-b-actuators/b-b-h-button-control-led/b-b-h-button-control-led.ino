@@ -8,7 +8,8 @@
 * Must connect the short wire of an LED to a small ohm resistor
 * connect the resistor to ground (GND)
 * and the long wire of the LED to a digital output D5
-*
+* 
+* Connect a button to both D6 and the other end to 3V3
 ********************************************************** end ****************************************************
 *
 *  July 22nd, 2020
@@ -19,7 +20,7 @@
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);     // LEDB = blue, LEDG or LED_BUILTIN = green, LEDR = red 
-  pinMode(D5, OUTPUT);              // external LED also connected to GND
+  pinMode(D5, OUTPUT);              // external LED also connected to a resisator and GND
   pinMode(D6, INPUT_PULLDOWN);      // Connect a button or switch from D6to the button to 3V3
 }
 
