@@ -29,8 +29,8 @@ void loop() {
       digitalWrite(LED_BUILTIN, LOW);   // Internal LED on, weird right
       digitalWrite(D5, HIGH);           // External LED on
   } else {
-      digitalWrite(LED_BUILTIN, HIGH);   // Internal LED on, weird right
-      digitalWrite(D5, LOW);           // External LED on  
+      digitalWrite(LED_BUILTIN, HIGH);   // Internal LED off
+      digitalWrite(D5, LOW);           // External LED off  
   }  
   // no delay needed since button/switch controls the action
 }
