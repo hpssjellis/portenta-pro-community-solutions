@@ -81,7 +81,7 @@ void setup() {
 
 void loop() {
 
- int myMillis = millis(); // milliseconds since the sketch began
+
  int myTime = millis()/1000; // seconds since the sketch began
  
  if ((millis() > myLastMillis + myDelay) || digitalRead(D6) ) {
@@ -103,8 +103,15 @@ void loop() {
          
    myFile = fopen(myFileName, "a");  // "a" for append or make it if file not there
    
-    // add the CSV file titles
-    fprintf(myFile,"W,X,Y,Z \r\n");
+    // add the CSV file titles with no spaces
+    fprintf(myFile,"timestamp,W,X,Y,Z\r\n");
+
+
+    
+    // now lets get the time values in seconds 
+    int myMillis = millis(); // milliseconds since the sketch began  
+    char bufferTime[12]; 
+    itoa( myMillis, bufferTime, 10);  
     
     // now lets get the sensor values     
     char buffer1[7]; 
@@ -122,6 +129,8 @@ void loop() {
     char myComma[] = ",";
     memcpy (buffer, "", sizeof(buffer) );  // one way to delete the old buffer
 
+    strcat(buffer, bufferTime);
+    strcat(buffer, myComma);
     strcat(buffer, buffer1);
     strcat(buffer, myComma);
     strcat(buffer, buffer2);
@@ -132,6 +141,47 @@ void loop() {
    
     fprintf(myFile, buffer);
     fprintf(myFile,"\r\n");  // next line
+
+// fake second row of data
+
+
+    
+    // now lets get the time values in seconds   
+   //char bufferTime[12]; 
+   myMillis += 1;
+    itoa( myMillis, bufferTime, 10);  
+    
+    // now lets get the sensor values     
+    //char buffer1[7]; 
+    itoa( analogRead(A1), buffer1, 10);
+    
+    //char buffer2[7]; 
+    itoa( analogRead(A2), buffer2, 10);
+    
+    //char buffer3[7]; 
+    itoa( analogRead(A3), buffer3, 10);
+    
+    //char buffer4[7]; 
+    itoa( analogRead(A4), buffer4, 10);
+
+    
+    memcpy (buffer, "", sizeof(buffer) );  // one way to delete the old buffer
+
+    strcat(buffer, bufferTime);
+    strcat(buffer, myComma);
+    strcat(buffer, buffer1);
+    strcat(buffer, myComma);
+    strcat(buffer, buffer2);
+    strcat(buffer, myComma);
+    strcat(buffer, buffer3);
+    strcat(buffer, myComma);
+    strcat(buffer, buffer4);
+   
+    fprintf(myFile, buffer);
+    fprintf(myFile,"\r\n");  // next line
+
+
+    
     fclose(myFile);  // important to close file before crap happens
     Serial.println("File saved as: "+ String(myFileName));
     
