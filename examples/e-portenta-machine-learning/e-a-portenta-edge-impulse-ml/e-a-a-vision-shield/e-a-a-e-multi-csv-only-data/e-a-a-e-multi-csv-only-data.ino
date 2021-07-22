@@ -30,7 +30,7 @@ mbed::FATFileSystem fs("fs");
 // Global Variables
 FILE *myFile;
 char buffer[50];   // must be long enough for all data points with commas: 56,34,23,56
-int myDelay = 10000;  // delay in milliseconds between sensor read
+int myDelay = 14000;  // delay in milliseconds between sensor read
 static unsigned long myLastMillis = 0;
 
 
@@ -47,7 +47,7 @@ void setup() {
     // Reformat if we can't mount the filesystem
     // this should only happen on the first boot
     Serial.println("No filesystem found, please check on computer and manually format if needed.");
-  //  err = fs.reformat(&block_device);  // seriously don't want to format your good data
+    err = fs.reformat(&block_device);  // seriously don't want to format your good data
   }
   if (err) {
      Serial.println("Error formatting SDCARD ");
@@ -80,16 +80,18 @@ void setup() {
 }
 
 void loop() {
-
+   
+  // Make a folder if needed
+  mkdir("fs/myFolder02",0777);                     // 0777 full access permissions linux style 
+   
  int myMillis = millis(); // milliseconds since the sketch began
  int myTime = millis()/1000; // seconds since the sketch began
  
  if ((millis() > myLastMillis + myDelay) || digitalRead(D6) ) {
    myLastMillis = millis();  // note if button push resets timer
    digitalWrite(LEDB, !digitalRead(LEDB)); // flip internal LED
-  //char myFileName[] = "fs/folder1/00000000.json";  // works if folder1 pre-made
-  char myFileName[] = "fs/00000000.csv";   // fs/ needs to be there think fileSystem
-  int myExtensionLength = 3;  // .txt = 3 .json = 4
+  char myFileName[] = "fs/myFolder02/00000000.csv";   // fs/ needs to be there, think fileSystem
+  int myExtensionLength = 3;  // .csv or .txt = 3,  .json = 4
   // does anyone understand why the  + '0' is needed below???
   myFileName[sizeof(myFileName)- myExtensionLength - 10] = myTime/10000000 % 10 + '0';
   myFileName[sizeof(myFileName)- myExtensionLength - 9] = myTime/1000000 % 10 + '0';
@@ -101,7 +103,7 @@ void loop() {
   myFileName[sizeof(myFileName)- myExtensionLength - 3] = myTime % 10 + '0';
   // Can make a new file but can't make a new folder
          
-   myFile = fopen(myFileName, "a");  // "a" for append or make it if file not there
+   myFile = fopen(myFileName, "w");  // "a" for append or make it if file not there, "w" write, "r" read
    
     // add the CSV file titles
     fprintf(myFile,"W,X,Y,Z \r\n");
