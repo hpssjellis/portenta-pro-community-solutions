@@ -13,7 +13,7 @@ Install it as a standalone or with the few supporting libraries. Either way work
 To find and maintain lots of example code and useful links that work with the Arduino Pro Portenta Series of Boards and Shields
 
 
-## School curriculum at https://github.com/hpssjellis/maker-robotics-and-machine-learning-with-the-arduino-portenta
+## School curriculum at https://github.com/hpssjellis/maker100
 
 It is expected that users will have some of the following:
 
