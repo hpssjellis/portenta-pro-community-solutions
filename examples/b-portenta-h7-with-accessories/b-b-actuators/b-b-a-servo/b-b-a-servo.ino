@@ -9,11 +9,8 @@
  * You need both a servo motor and a power supply correct for that servo motor! Best to use an external battery
  * even if you have a 3.3 V Servo motor.
  *
- ********************************************************** end ****************************************************
- *
- * Note: Needs Servo version above 0.0.2 or you need to make these changes
- * https://forum.arduino.cc/index.php?topic=691668.msg4700186#msg4700186
- *
+
+
  *
  * MUST HAVE A 6 VOLT EXTERNAL BATTERY
  * Note: REMEMBER 2 WIRES GO TO THE SERVO GROUND (Battery Neg and Board GND)
@@ -22,10 +19,12 @@
  * servo red to 6V battery positive
  * servo ground (brown or black) to 6V battery negative
  * servo ground (brown or black) to board GND
- * servo controller (orange or the other color) to board PWM pin A4   
+ * servo controller (orange or the other color) to board PWM pin D5   
  * 
  * Note For PWM pins check your boards Pinout diagram.
  * 
+ ********************************************************** end ****************************************************
+ *
  *  By Jeremy Ellis twitter @rocksetta
  *  Webpage http://rocksetta.com
  *  Arduino High School Robotics Course at
@@ -43,7 +42,7 @@ Servo myServo_05;
 void setup() {
   
   pinMode(LED_BUILTIN, OUTPUT);
-  myServo_05.attach(5);   // D5 should do PWM
+  myServo_05.attach(5);   // D5 should do PWM on Portenta
 
 }
 
