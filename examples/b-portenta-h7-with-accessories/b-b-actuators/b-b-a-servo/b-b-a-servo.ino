@@ -9,8 +9,6 @@
  * You need both a servo motor and a power supply correct for that servo motor! Best to use an external battery
  * even if you have a 3.3 V Servo motor.
  *
-
-
  *
  * MUST HAVE A 6 VOLT EXTERNAL BATTERY
  * Note: REMEMBER 2 WIRES GO TO THE SERVO GROUND (Battery Neg and Board GND)
