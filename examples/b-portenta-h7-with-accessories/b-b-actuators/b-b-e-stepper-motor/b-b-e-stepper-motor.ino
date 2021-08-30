@@ -23,4 +23,5 @@ void loop() {
     
     digitalWrite(D3, 0);  // a pulse needs to come donwn so set it low.
     delay(3);             // wait 3 ms
+   // delayMicroseconds(200); // what if we tried waiting 200 us (microseconds are much faster than milliseconds above)
 }
