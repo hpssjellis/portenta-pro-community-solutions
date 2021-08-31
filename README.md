@@ -28,6 +28,9 @@ May have: $45.99 USD [Portenta Breakout board](https://store.arduino.cc/usa/port
 Expensive but powerful.
 
 
+## Latest Portenta Pinout
+![Portneta Pinout](https://content.arduino.cc/assets/Pinout-PortentaH7_latest.png)
+
 
 ## Other Files
 
