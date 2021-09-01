@@ -1,7 +1,10 @@
+// This is just proof that the GPS is connected correctly and you can get data from satellites. 
+
+
 // On Portenta Serial1 UART1 (PA_9) TX on pin D14   to Grove GPS RX  they flip!
 // On Portenta Serial1 UART1 (PA_10) RX on pin D13  to Grove GPS TX
-Portenta 3V3 to grove GPS VCC
-Portenta GND to Grove GPS GND
+// Portenta 3V3 to grove GPS VCC
+// Portenta GND to Grove GPS GND
 
 
 // This works with Grove GPS AIR530
