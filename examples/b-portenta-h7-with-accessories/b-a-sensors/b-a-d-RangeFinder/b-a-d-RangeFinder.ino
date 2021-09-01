@@ -1,16 +1,6 @@
 
  
 
-//T4A01-RangeFinder-Name.ino 
-
-// EXAMPLE 
-//using Ultrasonic Range Finder from Robotshop 
-
-//http://www.robotshop.com/ca/en/hc-sr04-ultrasonic-range-finder.html 
-
-
-
-
 // Note: VCC on RangeFinder must go to +5V on Portenta
 //         GND on rangefinder goes to GND on Portenta 
          
@@ -30,14 +20,11 @@ void loop() {
   digitalWrite(myTriggerPin, HIGH);
   delayMicroseconds(10); 
   digitalWrite(myTriggerPin, LOW);
- 
   myDuration = pulseIn(myEchoPin, HIGH, 40000UL);
- 
   Serial.println("Duration us: "+ String(myDuration));
-  delay(50);  // delay only needed for the println 
- 
+  delay(200);
   if (myDuration > 2000    ){       // raw data from 200 to 16000                                          
-                                    // where  2000 raw = ~35cm,  4000 raw = ~80cm                                    
+                                        // where  2000 raw = ~35cm,  4000 raw = ~80cm                                    
        digitalWrite(LEDB, LOW);    // LEDB Blue LED on if far 
     } else { 
         digitalWrite(LEDB, HIGH);   // LEDB Blue LED off if close or nothing
@@ -46,5 +33,9 @@ void loop() {
 
 
 
+
+
 // Note:  29 microseconds per centimeter.
 // or     73.746 microseconds per inch
+
+//reminder /2 as the signal goes out and back.
