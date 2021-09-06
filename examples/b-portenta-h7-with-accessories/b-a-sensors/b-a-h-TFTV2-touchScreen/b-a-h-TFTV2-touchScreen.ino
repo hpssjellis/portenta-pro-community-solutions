@@ -17,6 +17,9 @@
 PortentaTouchScreen ts(D5, A6, A7, D4, 300);  // on Portenta
 
 // Set for Portenta
+// SPI settings  MISO (CIPO) D10  // on Portenta
+//               MOSI (COPI) D9
+//               SCK         D8
 #define TFT_CS D7
 #define TFT_DC D6
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
