@@ -1,4 +1,10 @@
 
+// Note. These were working and now seem to not be working.
+
+// Need to connect Serial1 TX to Serial1 RX.
+
+
+
 
 #ifdef CORE_CM7  
      
