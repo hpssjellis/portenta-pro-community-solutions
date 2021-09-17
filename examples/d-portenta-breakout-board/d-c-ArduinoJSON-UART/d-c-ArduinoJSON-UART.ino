@@ -1,5 +1,8 @@
 /* Portenta Serial UART
 
+Lately this code seems to be broken. Note Really Sure why
+
+
 // Need to connect breakout board UART1 RX to UART0 TX 
 
 
