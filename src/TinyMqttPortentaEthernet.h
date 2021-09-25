@@ -171,9 +171,11 @@ class MqttClient
 		bool connected() { return
 			(parent!=nullptr and client==nullptr) or
 			(client and client->connected()); }
-		void write(const char* buf, size_t length)
+		void write(const uint8_t* buf, size_t length)
 		{ if (client) client->write(buf, length); }
-
+	        void write(const char* buf, size_t length)
+		{ if (client) client->write((uint8_t *)buf, length); 
+		}
 		const std::string& id() const { return clientId; }
 		void id(std::string& new_id) { clientId = new_id; }
 
@@ -277,6 +279,7 @@ class MqttBroker
 	public:
 	  // TODO limit max number of clients
 		MqttBroker(uint16_t port);
+	        MqttBroker(TcpServer *server);
 		~MqttBroker();
 
 		void begin() { server->begin(); }
