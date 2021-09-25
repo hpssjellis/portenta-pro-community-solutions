@@ -3,6 +3,9 @@
 // TODO Should add a AUnit with both TCP_ASYNC and not TCP_ASYNC
 // #define TCP_ASYNC	// Uncomment this to use ESPAsyncTCP instead of normal cnx
 
+
+
+/*
 #if defined(ESP8266) || defined(EPOXY_DUINO)
 	#ifdef TCP_ASYNC
 		#include <ESPAsyncTCP.h>
@@ -15,11 +18,30 @@
 	  #include <AsyncTCP.h> // https://github.com/me-no-dev/AsyncTCP
   #endif
 #endif
+
+*/
+
+
+#if defined(ARDUINO_PORTENTA_H7_M7)
+  #include <WiFi.h>
+  #include <WiFiClient.h>
+  #include <WiFiServer.h>
+#endif
+
+
 #ifdef EPOXY_DUINO
   #define dbg_ptr uint64_t
 #else
   #define dbg_ptr uint32_t
 #endif
+
+
+
+
+
+
+
+
 #include <vector>
 #include <set>
 #include <string>
