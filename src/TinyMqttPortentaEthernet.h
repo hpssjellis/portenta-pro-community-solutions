@@ -14,6 +14,12 @@
 	#ifdef TCP_ASYNC
 	  #include <AsyncTCP.h> // https://github.com/me-no-dev/AsyncTCP
   #endif
+#elif defined(ARDUINO_PORTENTA_H7_M7)
+	#include <Arduino.h>
+	#include <Ethernet.h>
+	#include <PortentaEthernet.h>
+    #include <WiFi.h>
+	using namespace arduino;
 #endif
 #ifdef EPOXY_DUINO
   #define dbg_ptr uint64_t
@@ -38,8 +44,8 @@
   using TcpClient = AsyncClient;
   using TcpServer = AsyncServer;
 #else
-  using TcpClient = WiFiClient;
-  using TcpServer = WiFiServer;
+  using TcpClient = EthernetClient;
+  using TcpServer = EthernetServer;
 #endif
 
 enum MqttError
