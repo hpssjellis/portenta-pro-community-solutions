@@ -3,6 +3,9 @@ Portenta Pro Community Solutions and Links.
 
 Started March 20st 2021
 
+Note: All tinyMqtt code has been adapted for the Portenta from https://github.com/hsaturn/TinyMqtt
+
+
 ## Install from the Arduino IDE library manager --> search for "Portenta", then install the "Portenta Pro Coummnity Solutions"
 
 Install it as a standalone or with the few supporting libraries. Either way works fine.
