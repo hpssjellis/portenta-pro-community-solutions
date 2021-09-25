@@ -9,6 +9,14 @@ MqttBroker::MqttBroker(uint16_t port)
 #endif
 }
 
+MqttBroker::MqttBroker(TcpServer* server):
+	server(server)
+{
+#ifdef TCP_ASYNC
+	server->onClient(onClient, this);
+#endif
+}
+
 MqttBroker::~MqttBroker()
 {
 	while(clients.size())
@@ -28,7 +36,7 @@ MqttClient::MqttClient(MqttBroker* parent, TcpClient* new_client)
 	// client->onConnect() TODO
 	// client->onDisconnect() TODO
 #else
-	client = new WiFiClient(*new_client);
+	client = new TcpClient(*new_client);
 #endif
 	alive = millis()+5000;	// TODO MAGIC client expires after 5s if no CONNECT msg
 }
@@ -139,7 +147,7 @@ void MqttBroker::onClient(void* broker_ptr, TcpClient* client)
 void MqttBroker::loop()
 {
 #ifndef TCP_ASYNC
-  WiFiClient client = server->available();
+  TcpClient client = server->available();
 
   if (client)
 	{
