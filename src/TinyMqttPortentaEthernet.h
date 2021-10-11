@@ -35,7 +35,7 @@
 // #define TINY_MQTT_DEBUG
 
 #ifdef TINY_MQTT_DEBUG
-  #define debug(what) { Serial << (int)__LINE__ << ' ' << what << endl; delay(100); }
+  #define debug(what) { Serial << __LINE__ << ' ' << what << endl; delay(100); }
 #else
   #define debug(what) {}
 #endif
@@ -70,7 +70,7 @@ class Topic : public IndexedString
 class MqttClient;
 class MqttMessage
 {
-	const uint16_t MaxBufferLength = 4096;  //hard limit: 16k due to size decoding
+	const uint16_t MaxBufferLength = 255;
 	public:
 		enum Type
 		{
@@ -107,7 +107,8 @@ class MqttMessage
 		void add(const Topic& t) { add(t.str()); }
 		const char* end() const { return &buffer[0]+buffer.size(); }
 		const char* getVHeader() const { return &buffer[vheader]; }
-		void complete() { encodeLength(); }
+		uint16_t length() const { return buffer.size(); }
+		void complete();
 
 		void reset();
 
@@ -123,19 +124,18 @@ class MqttMessage
 		void create(Type type)
 		{
 			buffer=(char)type;
-			buffer+='\0';		// reserved for msg length byte 1/2
-			buffer+='\0';		// reserved for msg length byte 2/2 (fixed)
-			vheader=3;      // Should never change
+			buffer+='\0';		// reserved for msg length
+			vheader=2;
 			size=0;
 			state=Create;
 		}
-		MqttError sendTo(MqttClient*);
+		MqttError sendTo(MqttClient*) const;
 		void hexdump(const char* prefix=nullptr) const;
 
 	private:
-		void encodeLength();
+		void encodeLength(char* msb, int length) const;
 
-		std::string buffer;
+		mutable std::string buffer;	// mutable -> sendTo()
 		uint8_t vheader;
 		uint16_t size;	// bytes left to receive
 		State state;
@@ -166,30 +166,21 @@ class MqttClient
 		void connect(MqttBroker* parent);
 		void connect(std::string broker, uint16_t port, uint16_t keep_alive = 10);
 
-    // TODO it seems that connected returns true in tcp mode even if
-    // no negociation occured (only if tcp link is established)
 		bool connected() { return
 			(parent!=nullptr and client==nullptr) or
 			(client and client->connected()); }
 		void write(const uint8_t* buf, size_t length)
 		{ if (client) client->write(buf, length); }
-	        void write(const char* buf, size_t length)
-		{ if (client) client->write((uint8_t *)buf, length); 
-		}
+		void write(const char* buf, size_t length)
+		{ if (client) client->write((uint8_t *)buf, length); }
+
 		const std::string& id() const { return clientId; }
 		void id(std::string& new_id) { clientId = new_id; }
 
 		/** Should be called in main loop() */
 		void loop();
 		void close(bool bSendDisconnect=true);
-		void setCallback(CallBack fun)
-		{
-			callback=fun;
-			#ifdef TINY_MQTT_DEBUG
-				Serial << "Callback set to " << (long)fun << endl;
-				if (callback) callback(this, "test/topic", "value", 5);
-			#endif
-		};
+		void setCallback(CallBack fun) {callback=fun; };
 
 		// Publish from client to the world
 		MqttError publish(const Topic&, const char* payload, size_t pay_length);
@@ -208,34 +199,29 @@ class MqttClient
 
 		void dump(std::string indent="")
 		{
-		  (void)indent;
-      #ifdef TINY_MQTT_DEBUG
-        uint32_t ms=millis();
-        Serial << indent << "+-- " << '\'' << clientId.c_str() << "' " << (connected() ? " ON " : " OFF");
-        Serial << ", alive=" << alive << '/' << ms << ", ka=" << keep_alive << ' ';
-        Serial << (client && client->connected() ? "" : "dis") << "connected";
-        if (subscriptions.size())
-        {
-          bool c = false;
-          Serial << " [";
-          for(auto s: subscriptions)
-            (void)indent;
-          {
-            if (c) Serial << ", ";
-            Serial << s.str().c_str();
-            c=true;
-          }
-          Serial << ']';
-        }
-        Serial << endl;
-      #endif
+			uint32_t ms=millis();
+			Serial << indent << "+-- " << '\'' << clientId.c_str() << "' " << (connected() ? " ON " : " OFF");
+			Serial << ", alive=" << alive << '/' << ms << ", ka=" << keep_alive << ' ';
+			Serial << (client && client->connected() ? "" : "dis") << "connected";
+			if (subscriptions.size())
+			{
+				bool c = false;
+				Serial << " [";
+				for(auto s: subscriptions)
+				{
+					if (c) Serial << ", ";
+					Serial << s.str().c_str();
+					c=true;
+				}
+				Serial << ']';
+			}
+			Serial << endl;
 		}
 
-		static long counter;  // Number of processed messages
+		/** Count the number of messages that have been sent **/
+		static long counter;
 
 	private:
-
-		// event when tcp/ip link established (real or fake)
 		static void onConnect(void * client_ptr, TcpClient*);
 #ifdef TCP_ASYNC
 		static void onData(void* client_ptr, TcpClient*, void* data, size_t len);
@@ -246,10 +232,10 @@ class MqttClient
 		friend class MqttBroker;
 		MqttClient(MqttBroker* parent, TcpClient* client);
 		// republish a received publish if topic matches any in subscriptions
-		MqttError publishIfSubscribed(const Topic& topic, MqttMessage& msg);
+		MqttError publishIfSubscribed(const Topic& topic, const MqttMessage& msg);
 
 		void clientAlive(uint32_t more_seconds);
-		void processMessage(MqttMessage* message);
+		void processMessage(const MqttMessage* message);
 
 		bool mqtt_connected = false;
 		char mqtt_flags;
@@ -262,7 +248,7 @@ class MqttClient
 		// (this is the case when MqttBroker isn't used except here)
 		MqttBroker* parent=nullptr;		// connection to local broker
 
-		TcpClient* client=nullptr;		// connection to remote broker
+		TcpClient* client=nullptr;		// connection to mqtt client or to remote broker
 		std::set<Topic>	subscriptions;
 		std::string clientId;
 		CallBack callback = nullptr;
@@ -279,7 +265,7 @@ class MqttBroker
 	public:
 	  // TODO limit max number of clients
 		MqttBroker(uint16_t port);
-	        MqttBroker(TcpServer *server);
+		MqttBroker(TcpServer *server);
 		~MqttBroker();
 
 		void begin() { server->begin(); }
@@ -307,7 +293,7 @@ class MqttBroker
 		{ return compareString(auth_password, password, len); }
 
 
-		MqttError publish(const MqttClient* source, const Topic& topic, MqttMessage& msg) const;
+		MqttError publish(const MqttClient* source, const Topic& topic, const MqttMessage& msg) const;
 
 		MqttError subscribe(const Topic& topic, uint8_t qos);
 
