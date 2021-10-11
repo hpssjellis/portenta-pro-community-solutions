@@ -397,7 +397,7 @@ void MqttClient::processMessage(const MqttMessage* mesg)
 #ifdef TINY_MQTT_DEBUG
 if (mesg->type() != MqttMessage::Type::PingReq && mesg->type() != MqttMessage::Type::PingResp)
 {
-	Serial << "---> INCOMING " << _HEX(mesg->type()) << " client(" << (dbg_ptr)client << ':' << clientId << ") mem=" << ESP.getFreeHeap() << endl;
+	Serial << "---> INCOMING " << _HEX(mesg->type()) << " client(" << (dbg_ptr)client << ':' << clientId << ") mem=" << " ESP.getFreeHeap() " << endl;
 	// mesg->hexdump("Incoming");
 }
 #endif
