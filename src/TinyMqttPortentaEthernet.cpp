@@ -1,4 +1,4 @@
-#include "TinyMqtt.h"
+#include "TinyMqttPortentaEthernet.h"
 #include <sstream>
 
 void outstring(const char* prefix, const char*p, uint16_t len)
