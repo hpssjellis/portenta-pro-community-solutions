@@ -1,6 +1,6 @@
 
 #include "Arduino.h"
-#include "WiFi.h"
+//#include "WiFi.h"
 
 //#include "TinyMqttPortenta.h"   // https://github.com/hsaturn/TinyMqtt
 #include "portneta-pro-community-solutions.h"   // https://github.com/hsaturn/TinyMqtt
