@@ -14,6 +14,10 @@
 	#ifdef TCP_ASYNC
 	  #include <AsyncTCP.h> // https://github.com/me-no-dev/AsyncTCP
   #endif
+   #elif defined(ARDUINO_PORTENTA_H7_M7)
+      #include <WiFi.h>
+      #include <WiFiClient.h>
+      #include <WiFiServer.h>
 #endif
 #ifdef EPOXY_DUINO
   #define dbg_ptr uint64_t
