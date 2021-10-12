@@ -16,9 +16,9 @@
   #endif
 #elif defined(ARDUINO_PORTENTA_H7_M7)
 	#include <Arduino.h>
-	#include <Ethernet.h>
 	#include <PortentaEthernet.h>
-    #include <WiFi.h>
+	#include <Ethernet.h>
+        #include <WiFi.h>
 	using namespace arduino;
 #endif
 #ifdef EPOXY_DUINO
