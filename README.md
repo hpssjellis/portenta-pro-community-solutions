@@ -38,7 +38,7 @@ Expensive but powerful.
 
 [murata-lora-module.md](murata-lora-module.md)
 
-[pricelist.md](pricelist.md)
+Costs: For schools:  [pricelist.md](pricelist.md),   for individuals [price-list-individuals.md](https://github.com/hpssjellis/maker100/blob/main/price-list-individuals.md)
 
 [notes.md](notes.md)
 
