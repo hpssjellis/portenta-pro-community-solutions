@@ -3,7 +3,7 @@
 
 
 // test this first then make an #ifDef to activate it
-#include <TinyMqttPortentaEthernet.h>
+//#include <TinyMqttPortentaEthernet.h>
 
 // then test this
 // then figure out how to switch
