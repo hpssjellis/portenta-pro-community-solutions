@@ -35,12 +35,12 @@
 #include <Arduino.h>  // only needed for https://platformio.org/
 #include <Servo.h>
 
-Servo myServo_05;
+Servo myServo_D2;
 
 void setup() {
   
   pinMode(LED_BUILTIN, OUTPUT);
-  myServo_05.attach(5);   // D5 should do PWM on Portenta
+  myServo_D2.attach(D2);   // D2 should do PWM on Portenta
 
 }
 
@@ -48,18 +48,18 @@ void loop() {
  
   digitalWrite(LED_BUILTIN, LOW); // Portenta onboard LED on    
     
-  myServo_05.write(20);           // servo at 20 degrees try 0
+  myServo_D2.write(20);           // servo at 20 degrees try 0
   delay(2000);
     
-  myServo_05.write(160);         // servo at 160 degrees try 180
+  myServo_D2.write(160);         // servo at 160 degrees try 180
   delay(2000);
 
-  myServo_05.write(90);          // servo at 90 degrees
+  myServo_D2.write(90);          // servo at 90 degrees
   delay(2000);   
     
     
   for (int myLoop = 20; myLoop <= 160; myLoop++){
-    myServo_05.write(myLoop);
+    myServo_D2.write(myLoop);
     delay(25);  // short delay 25 ms
   }
 
