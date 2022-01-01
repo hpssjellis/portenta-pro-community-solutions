@@ -8,9 +8,9 @@
 *
 * https://github.com/hpssjellis/ArduinoCore-stm32l0/tree/vision_shield
 *
-* 
+* Can write your own porgrams but must have a sketch that communicates between the murata module and the portenta
 *
-*
+* I will eventually make a movie
 *
 *
 *
