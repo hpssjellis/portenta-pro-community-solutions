@@ -21,7 +21,9 @@ void loop() {
   myIncoming = Serial.readString();
   Serial.println("You entered : " + String(myIncoming));
 
-  //myIncoming.toUpperCase(); 
+  // other string funcitons at 
+  // https://www.arduino.cc/reference/en/language/variables/data-types/stringobject/
+  // myIncoming.toUpperCase(); 
   myLocation = myIncoming.indexOf("Hi");  
   
   if(myLocation >= 0){  // -1 means nothing found
