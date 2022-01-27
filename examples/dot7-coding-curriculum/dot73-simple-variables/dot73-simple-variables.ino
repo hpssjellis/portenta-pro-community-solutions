@@ -26,7 +26,7 @@ void loop() {
   Serial.println("myBool01: " + String(myBool01) );
   Serial.println("myLong01 : " + String(myLong01) );
   Serial.println("myFloat01 * myInt01 : " + String(myFloat01,3) );
-  Serial.println("myChar01: " + myChar01 );
+  Serial.println("myChar01: " + String(myChar01) );
   Serial.println("myString: " + myString );  
   Serial.println("Why doesn't myLocal = 5 when it equals: " + String(myLocal) );
 
