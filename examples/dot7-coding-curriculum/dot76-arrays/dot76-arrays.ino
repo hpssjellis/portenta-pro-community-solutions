@@ -1,7 +1,7 @@
 // Global Variables
 
 //int myArray[4] = {5,2,7,9};  // one way to set arrays
-int myMax = 9;
+const int myMax = 9;    // must be a non-changing constant
 int myArray[myMax];
 
 void setup() {
