@@ -1,5 +1,25 @@
 // Beginner C++ Programming String Input and Output
-// You will need to open the Serial monitor and the word "Hi"
+// You will need to open the Serial monitor and type the word "Hi" then click "send"
+
+/*
+* Note: The F() macro can move a pure string into flash instead of RAM
+* That can be a seriaous help when you have used up all your RAM memory.
+*
+Serial.println(F(“Hello World”));
+*
+* Another commonly used and efficient output method is "printf":
+*
+int x = 40;
+float y = 34.2745;
+Serial.printf("Int is: %d and Float is %.2f \n", x, y);
+*
+* %.2f restrict a float number to just two digits after the decimal point in Arduino IDE.
+*
+* As you will see I use String() to wrap all outputs, not efficient but easy to get started.
+*
+*/
+
+
 
 //Global Variables
 String myIncoming = "";
