@@ -8,6 +8,7 @@
 *   This example code is in the public domain.
 */
 
+
 int baud = 115200;
 uint8_t parity = 0;
 
