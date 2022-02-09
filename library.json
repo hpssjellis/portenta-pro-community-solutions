@@ -19,6 +19,6 @@
   "frameworks": "arduino",
   "platforms": "*",
   "export": {
-    "include": "libraries/portenta-pro-community-solutions/src"
+    "exclude": ["media", "research-not-ready", "zipped-libraries"]
   }
 }
