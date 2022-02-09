@@ -17,7 +17,13 @@
   },
   "version":"0.7.9",
   "frameworks": "arduino",
-  "platforms": "*",
+  "platforms":     
+  [
+        "mbed",
+        "mbed_portenta",
+        "mbed_nano",
+        "samd21"
+    ],
   "export": {
     "exclude": ["media", "research-not-ready", "zipped-libraries"]
   }
