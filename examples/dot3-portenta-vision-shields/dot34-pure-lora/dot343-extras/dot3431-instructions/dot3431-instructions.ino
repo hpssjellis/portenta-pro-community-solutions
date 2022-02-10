@@ -10,9 +10,9 @@
 *
 * Can write your own porgrams but must have a sketch that communicates between the murata module and the portenta
 *
-* I will eventually make a movie
+* Youtube video showing the programming of 2 LoRa vision shield protentas
 *
-*
+*  https://www.youtube.com/watch?v=d2lkL6oCsgg&list=PL57Dnr1H_egtm0pi-okmG0iE_X5dROaLw&index=44
 *
 *
 *
