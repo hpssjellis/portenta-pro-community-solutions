@@ -22,7 +22,7 @@
         "mbed",
         "mbed_portenta",
         "mbed_nano",
-        "samd21"
+        "samd"
     ],
   "export": {
     "exclude": ["media", "research-not-ready", "zipped-libraries"]
