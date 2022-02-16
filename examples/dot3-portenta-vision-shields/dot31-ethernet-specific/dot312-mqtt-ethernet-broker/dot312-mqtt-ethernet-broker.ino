@@ -11,7 +11,8 @@
 
 
 //#define TINY_MQTT_PORTENTA_ETHERNET  // Draft to switch between WiFi and Ethernet
-#include "portenta-pro-community-solutions.h"   // https://github.com/hsaturn/TinyMqtt
+//#include "portenta-pro-community-solutions.h"   // based on  https://github.com/hsaturn/TinyMqtt
+#include <tinyMqttPortentaEthernetV2.h>  
 
 
 #define PORT 1883
