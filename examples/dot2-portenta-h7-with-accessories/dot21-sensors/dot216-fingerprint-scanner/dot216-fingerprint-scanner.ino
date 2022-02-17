@@ -1,4 +1,4 @@
-
+#include <Arduino.h> // Only needed by https://platformio.org/
 #include <GT5X.h>
 
 /* Count templates */
