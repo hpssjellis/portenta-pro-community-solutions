@@ -14,7 +14,7 @@
 *
 */
 
-
+#include <Arduino.h> // Only needed by https://platformio.org/
 #include <Portenta_Ethernet.h>
 #include <Ethernet.h>
 
