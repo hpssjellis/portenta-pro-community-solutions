@@ -18,6 +18,8 @@
 *  Website https://www.rocksetta.com
 */
 
+#include <Arduino.h> // Only needed by https://platformio.org/
+
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);     // LEDB = blue, LEDG or LED_BUILTIN = green, LEDR = red 
   pinMode(D5, OUTPUT);              // external LED also connected to a resisator and GND
