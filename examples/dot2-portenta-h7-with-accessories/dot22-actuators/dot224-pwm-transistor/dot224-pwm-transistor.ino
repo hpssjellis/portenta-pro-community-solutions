@@ -21,7 +21,7 @@
 
 
 
-
+#include <Arduino.h> // Only needed by https://platformio.org/
 
 void setup() {
    Serial.begin(115200);
@@ -44,8 +44,7 @@ void loop() {
     digitalWrite(LEDB, HIGH);
     Serial.println("Stopped");
     delay(1000);
-    
-    
+        
     analogWrite(D5,200);  // PWM Max  = 256
     digitalWrite(LEDB, LOW);
     Serial.println("Fast");
