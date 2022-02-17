@@ -5,6 +5,7 @@
   note: Helium must be setup for what it does with the CayenneLPP encoded data
 */
 
+#include <Arduino.h> // Only needed by https://platformio.org/
 #include <MKRWAN.h>
 #include <CayenneLPP.h>
 
