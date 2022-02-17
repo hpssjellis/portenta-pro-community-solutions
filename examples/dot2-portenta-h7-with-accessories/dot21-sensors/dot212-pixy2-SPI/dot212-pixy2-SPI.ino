@@ -38,6 +38,9 @@ https://pixycam.com/pixy2
 
 */
 
+
+#include <Arduino.h> // Only needed by https://platformio.org/
+
 int wow = 2;   // just seems to need an integer
 
 #include "Pixy2.h"
