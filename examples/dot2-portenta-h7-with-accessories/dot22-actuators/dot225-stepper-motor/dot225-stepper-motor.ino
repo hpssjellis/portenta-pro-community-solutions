@@ -10,6 +10,9 @@
 // Then write your own code to control the stepper
 // does delayMicroseconds() make it go faster or slower
 
+#include <Arduino.h> // Only needed by https://platformio.org/
+
+
 void setup() {
    pinMode(D2, OUTPUT);  // Direction
    pinMode(D3, OUTPUT);  // Step
