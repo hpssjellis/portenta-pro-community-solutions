@@ -22,7 +22,7 @@
 
 
 
-#include "Arduino.h"
+#include <Arduino.h> // Only needed by https://platformio.org/
 #include <TensorFlowLite.h>
 #include "model.h"
 #include "rocksetta.h"
