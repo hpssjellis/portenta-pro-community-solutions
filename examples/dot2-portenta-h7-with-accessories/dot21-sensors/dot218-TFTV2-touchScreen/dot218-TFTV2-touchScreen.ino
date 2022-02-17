@@ -4,7 +4,7 @@
 // needs this library install as zip file https://github.com/Lennart401/PortentaTouchScreen
 //
 
-
+#include <Arduino.h> // Only needed by https://platformio.org/
 #include <Adafruit_GFX.h>
 #include <Adafruit_ILI9341.h>
 #include <PortentaTouchScreen.h>
