@@ -3,7 +3,10 @@
 
 // Note: VCC on RangeFinder must go to +5V on Portenta
 //         GND on rangefinder goes to GND on Portenta 
-         
+    
+#include <Arduino.h> // Only needed by https://platformio.org/
+
+
 int myTriggerPin = D6;  // Trigger on RangeFinder
 int myEchoPin = D7;     // Echo on Rangefinder  
 unsigned long myDuration;
