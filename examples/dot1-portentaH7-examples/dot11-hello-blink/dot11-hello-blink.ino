@@ -17,6 +17,8 @@
 *  Website https://www.rocksetta.com
 */
 
+#include <Arduino.h> // Only needed by https://platformio.org/
+
 void setup() {
   Serial.begin(115200);
   pinMode(LEDB, OUTPUT);   // LEDB = blue, LEDG or LED_BUILTIN = green, LEDR = red 
