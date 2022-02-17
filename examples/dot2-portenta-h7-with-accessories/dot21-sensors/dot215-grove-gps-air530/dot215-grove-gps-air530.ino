@@ -9,8 +9,23 @@
 
 // This works with Grove GPS AIR530
 
+#include <Arduino.h> // Only needed by https://platformio.org/
+
+
 unsigned char buffer[64];                   // buffer array for data receive over serial port
 int count=0;                                // counter for buffer array
+
+
+void clearBufferArray()                     // function to clear buffer array
+{
+    for (int i=0; i<count;i++)
+    {
+        buffer[i]=NULL;
+    }                      // clear all index of array with command NULL
+}
+
+
+
 void setup()
 { 
     Serial1.begin(9600);                 // the Sensor Serial1 baud rate
@@ -35,10 +50,3 @@ void loop()
 }
  
  
-void clearBufferArray()                     // function to clear buffer array
-{
-    for (int i=0; i<count;i++)
-    {
-        buffer[i]=NULL;
-    }                      // clear all index of array with command NULL
-}
