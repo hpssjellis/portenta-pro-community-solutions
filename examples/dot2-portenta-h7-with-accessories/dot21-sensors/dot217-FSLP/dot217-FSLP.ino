@@ -10,7 +10,7 @@
 * 
 */
 
-
+#include <Arduino.h> // Only needed by https://platformio.org/
 
 #define SERIAL_BAUD_RATE    115200
 
@@ -27,6 +27,63 @@
 * GLOBALS
 
 **********************************************************************************************************/
+
+
+
+
+/**********************************************************************************************************
+
+* printFixed() - Serial Print with space padding for consistent positioning in terminal. Optional +/- sign
+
+**********************************************************************************************************/
+
+void printFixed(int value, int digit_places, boolean show_sign)
+
+{
+
+  if(value < 0)
+
+  {
+
+    Serial.print("-");
+
+    value = abs(value);
+
+  }
+
+  else if(show_sign)
+
+  {
+
+    Serial.print("+");
+
+  }
+
+  int compare = 10;
+
+  for(int i = 0; i < digit_places - 1; i ++)
+
+  {
+
+    if(value < compare)
+
+    {
+
+      Serial.print(" ");
+
+    }
+
+    compare *= 10;
+
+  } 
+
+  Serial.print(value);
+  delay(600);
+
+}
+
+
+
 
 
 
@@ -146,54 +203,3 @@ void loop()
 
 
 
-
-/**********************************************************************************************************
-
-* printFixed() - Serial Print with space padding for consistent positioning in terminal. Optional +/- sign
-
-**********************************************************************************************************/
-
-void printFixed(int value, int digit_places, boolean show_sign)
-
-{
-
-  if(value < 0)
-
-  {
-
-    Serial.print("-");
-
-    value = abs(value);
-
-  }
-
-  else if(show_sign)
-
-  {
-
-    Serial.print("+");
-
-  }
-
-  int compare = 10;
-
-  for(int i = 0; i < digit_places - 1; i ++)
-
-  {
-
-    if(value < compare)
-
-    {
-
-      Serial.print(" ");
-
-    }
-
-    compare *= 10;
-
-  } 
-
-  Serial.print(value);
-  delay(600);
-
-}
