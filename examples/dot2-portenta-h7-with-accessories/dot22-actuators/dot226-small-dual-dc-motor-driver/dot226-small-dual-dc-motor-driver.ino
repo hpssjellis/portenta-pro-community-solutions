@@ -7,11 +7,13 @@
 //Note: on above A4 was changed to Portenta D5 which allows PWM
 
 
-
 // You are suppossed to get it working using the web-app
 // Draw your circuit diagram first
 // This program will just tell you if  the connections are working
 // See https://www.pololu.com/product/2135 for assistance
+
+#include <Arduino.h> // Only needed by https://platformio.org/
+
 
 void setup() {
     pinMode(D5, OUTPUT);   // PWM 0 to 256
