@@ -27,27 +27,6 @@
 
 #include <Arduino.h>  // only needed for https://platformio.org/
 
-void setup() {
-  
-  analogWriteResolution(10);
-  randomSeed(A1);  // grab a random Analog reading 
-  Serial.begin(115200);
-  pinMode(DAC, OUTPUT);
-  pinMode(6, INPUT_PULLDOWN);  // set pin D6
-  // pinMode(A6, INPUT); You don't have to declare A6 for Analog input, that is the default
-
-}
-
-void loop() {
-  
-  myDac(0);
-  myDac(800); 
-  int myRandomNumber  = rand() % 1024;  // a random number between 0 and 1023
-  myDac(myRandomNumber);
-  Serial.println("----------------------");
-  delay(1000); // wait a few seconds
-
-}
 
 
 void myDac(int myDacSet){
@@ -63,3 +42,29 @@ void myDac(int myDacSet){
   Serial.println(digitalRead(6));
   
 }
+
+
+
+void setup() {
+  
+  analogWriteResolution(10);
+  randomSeed(A1);  // grab a random Analog reading 
+  Serial.begin(115200);
+  pinMode(DAC, OUTPUT);
+  pinMode(6, INPUT_PULLDOWN);  // set pin D6
+  // pinMode(A6, INPUT); You don't have to declare A6 for Analog input, that is the default
+
+}
+
+
+void loop() {
+  
+  myDac(0);
+  myDac(800); 
+  int myRandomNumber  = rand() % 1024;  // a random number between 0 and 1023
+  myDac(myRandomNumber);
+  Serial.println("----------------------");
+  delay(1000); // wait a few seconds
+
+}
+
