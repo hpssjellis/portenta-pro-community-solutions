@@ -17,7 +17,7 @@
  * servo red to 6V battery positive
  * servo ground (brown or black) to 6V battery negative
  * servo ground (brown or black) to board GND
- * servo controller (orange or the other color) to board PWM pin D5   
+ * servo controller (orange or the other color) to board PWM pin D2   
  * 
  * Note For PWM pins check your boards Pinout diagram.
  * 
