@@ -137,7 +137,7 @@ void loop()
     if (myBestClassificationNumber == 0){    // 0 unknown do nothing
         digitalWrite(LEDB, LOW);    
         digitalWrite(LEDG, LOW);   
-        Serial.println("1 Pop Go right: " + String(myBestClassificationValue,2));
+        ei_printf("0: Unknown Stop: %.5f\n", myBestClassificationValue);
     }
  */
 
