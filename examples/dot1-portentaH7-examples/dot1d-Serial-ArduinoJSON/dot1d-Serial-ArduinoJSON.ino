@@ -1,5 +1,7 @@
 /* Portenta Serial UART
-
+*
+* Info Here     https://github.com/arduino/ArduinoCore-mbed/issues/364
+*
 * Serial UART using Pin 5 and Pin 6 
 * Only one way transfer but hopefully can be switched
 * 
