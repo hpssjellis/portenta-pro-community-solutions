@@ -6,6 +6,8 @@
 * Connect Serial1 pin D14 TX to myUART6 pin D4 RX 
 * Connect Serial1 pin D13 RX to myUART6 pin D5 TX 
 * 
+* The LED's controlled by the M4 core should flash through colors quickly
+* 
 * ================================================================================
 * 
 * * UART Information for the PortentaH7 
@@ -74,7 +76,7 @@ void loop() {
     if (x == '0' ) {digitalWrite(LEDR, LOW) ; digitalWrite(LEDG, HIGH); digitalWrite(LEDB, HIGH);} // 0, Red
     if (x == '2' ) {digitalWrite(LEDR, HIGH); digitalWrite(LEDG, LOW) ; digitalWrite(LEDB, HIGH);} // 2, Green
     if (x == '6' ) {digitalWrite(LEDR, HIGH); digitalWrite(LEDG, HIGH); digitalWrite(LEDB, LOW) ;} // 6, Blue
-    if (x == '6' ) {digitalWrite(LEDR, LOW) ; digitalWrite(LEDG, LOW) ; digitalWrite(LEDB, LOW) ;} // 8, White
+    if (x == '8' ) {digitalWrite(LEDR, LOW) ; digitalWrite(LEDG, LOW) ; digitalWrite(LEDB, LOW) ;} // 8, White
     // Reminder for modern onboard LED's  LOW is on 
 
   }
