@@ -18,7 +18,11 @@
  *
  * another reference here 
  * https://github.com/olikraus/u8g2/wiki/u8g2reference#setfont
- 
+ *
+ * For platformio you need the following at the bottom of the platformio.ini file
+   lib_deps = olikraus/U8g2@^2.32.10
+ *
+ *
  ********************************************************** end ****************************************************
  *
  * 
