@@ -20,6 +20,8 @@
  * servo controller (orange or the other color) to board PWM pin D2   
  * 
  * Note For PWM pins check your boards Pinout diagram.
+ * For platform.io you need this line in your platform.ini file at the bottom of the file
+ lib_deps = arduino-libraries/Servo
  * 
  ********************************************************** end ****************************************************
  *
