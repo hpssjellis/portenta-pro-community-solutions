@@ -1,5 +1,7 @@
 /*
   WiFi Web Server LED Blink
+  
+  Enter you wifi and password in the code below 
 
  A simple web server that lets you blink an LED via the web.
  This sketch will print the IP address of your WiFi module (once connected)
@@ -13,9 +15,7 @@
  This example is written for a network using WPA encryption. For
  WEP or WPA, change the Wifi.begin() call accordingly.
 
- Circuit:
- * Board with NINA module (Arduino MKR WiFi 1010, MKR VIDOR 4000 and UNO WiFi Rev.2)
- * LED attached to pin 9
+
 
  created 25 Nov 2012
  by Tom Igoe
