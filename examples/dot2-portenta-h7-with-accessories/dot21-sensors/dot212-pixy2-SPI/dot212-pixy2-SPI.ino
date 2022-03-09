@@ -36,6 +36,14 @@ https://pixycam.com/pixy2
 //   D8, D9
 //  GND, NC    (not connected)
 
+
+
+
+if using platform.io you need this library in the platformio.ini file
+
+lib_deps = arduino12/pixy2@^1.0.4
+
+
 */
 
 
