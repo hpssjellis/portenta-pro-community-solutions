@@ -1,3 +1,22 @@
+/* Hardware setup - FPS connected to Photon using JST SH Jumper 4 Wire Assembly (https://www.sparkfun.com/products/10359)
+	If the JST SH jumper wires were numbered left to right as 1-4 (with black wire being Wire 2), the connections would be:	
+	FPS Wire 1 (Red) = VCC --> Portenta 3.3V
+	FPS Wire 2 (Black) = GND --> Portenta GND
+	FPS Wire 3 (Yellow) = RX --> Portenta TX   D14
+	FPS Wire 4 (Green) = TX --> Portenta RX    D13
+	
+	Built-in green LED on FPS will light up if wiring is correct
+    
+    Note in the extra folders is the enroll.ino code that enters fingerprints.
+    Note: The FPS needs to warm up for about 10 minutes before it is stable.
+    Somedays works really well, other days a bit flaky
+*/
+
+
+
+
+
+
 #include <Arduino.h> // Only needed by https://platformio.org/
 #include <GT5X.h>
 
