@@ -1,4 +1,29 @@
+/* Edge Impulse Arduino examples
+ * Copyright (c) 2021 EdgeImpulse Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+/* Includes ---------------------------------------------------------------- */
+
 #include "camera.h"
+#include "himax.h"
 #include "edge-impulse-sdk/dsp/image/image.hpp"
 
 /* Constant defines -------------------------------------------------------- */
@@ -66,7 +91,10 @@ void ei_printf(const char *format, ...) {
 static bool debug_nn = false; // Set this to true to see e.g. features generated from the raw signal
 static bool is_initialised = false;
 static bool is_ll_initialised = false;
-static CameraClass cam;
+HM01B0 himax;
+static Camera cam(himax);
+FrameBuffer fb;
+
 
 /*
 ** @brief points to the output of the capture
@@ -91,6 +119,8 @@ int calculate_resize_dimensions(uint32_t out_width, uint32_t out_height, uint32_
 
 
 
+// setup and loop from orignal code moved to main sketch
+
 
 
 
@@ -108,8 +138,7 @@ bool ei_camera_init(void) {
     if (is_initialised) return true;
 
     if (is_ll_initialised == false) {
-        int r = cam.begin(CAMERA_R320x320, 30);
-        if (r != 0) {
+        if (!cam.begin(CAMERA_R320x320, CAMERA_GRAYSCALE, 30)) {
             ei_printf("ERR: Failed to initialise camera\r\n");
             return false;
         }
@@ -136,6 +165,7 @@ bool ei_camera_init(void) {
     ei_camera_frame_buffer = (uint8_t *)ALIGN_PTR((uintptr_t)ei_camera_frame_mem, 32);
 #endif
 
+    fb.setBuffer(ei_camera_frame_buffer);
     is_initialised = true;
 
     return true;
@@ -175,7 +205,7 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, uint8_t *out_buf
         return false;
     }
 
-    int snapshot_response = cam.grab(ei_camera_frame_buffer);
+    int snapshot_response = cam.grabFrame(fb, 3000);
     if (snapshot_response != 0) {
         ei_printf("ERR: Failed to get snapshot (%d)\r\n", snapshot_response);
         return false;
@@ -305,7 +335,6 @@ int calculate_resize_dimensions(uint32_t out_width, uint32_t out_height, uint32_
         {200, 150},
         {256, 192},
         {320, 240},
-        {320, 320},
     };
 
     // (default) conditions
