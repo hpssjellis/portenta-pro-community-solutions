@@ -21,7 +21,10 @@
  */
 
 /* Includes ---------------------------------------------------------------- */
-#include <ei-v20unknown-1popGoRight-2waterGoLeft-3fast-v2-0-0_inferencing.h>
+
+#include <ei-v6-0-1-fomo-2.8.0mbed-96x96-vision-1pop_inferencing.h>
+
+//#include <ei-v20unknown-1popGoRight-2waterGoLeft-3fast-v2-0-0_inferencing.h>
 #include "edge-impulse-advanced.h"
 
 // Global Variables
@@ -102,11 +105,37 @@ void loop()
     ei_printf("(DSP: %d ms., Classification: %d ms., Anomaly: %d ms.)",
         result.timing.dsp, result.timing.classification, result.timing.anomaly);
     ei_printf(": \n");
-    for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-        ei_printf("    %s: %.5f\n", result.classification[ix].label, result.classification[ix].value);
+
+    // new code for FOMO bounding box edge impulse models
+    // if no value in the first box then nothing in any of the boxes
+    bool bb_found = result.bounding_boxes[0].value > 0;
+    for (size_t ix = 0; ix < EI_CLASSIFIER_OBJECT_DETECTION_COUNT; ix++) {
+        auto bb = result.bounding_boxes[ix];
+        if (bb.value == 0) {
+            continue;
+        }
+
+        ei_printf("    %s (", bb.label);
+        ei_printf_float(bb.value);
+        ei_printf(") [ x: %u, y: %u, width: %u, height: %u ]\n", bb.x, bb.y, bb.width, bb.height);
     }
+
+    if (!bb_found) {
+        ei_printf("    No objects found\n");
+    }
+
+
+
+    
+
+   // how the above is done for classifying exported edge impulse models 
+   // for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
+    //    ei_printf("    %s: %.5f\n", result.classification[ix].label, result.classification[ix].value);
+   // }
+
+
+    
 #if EI_CLASSIFIER_HAS_ANOMALY == 1
     Serial.println("    anomaly score: " + String(result.anomaly, 5));
 #endif
 }
-
