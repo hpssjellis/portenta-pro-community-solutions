@@ -30,14 +30,16 @@
  * another reference here 
  * https://learn.adafruit.com/adafruit-gfx-graphics-library/graphics-primitives
  *
- * Note1: Should work with any Edge Impulse model just chnage the below include to your model name
- * Note2: I simplyify my model order by always using: 0unknown, 1next, 2other, etc, etc
+ * Note1: Should work with any Edge Impulse model just change the below include to your model name
  */
 
 
  
 /* Includes ---------------------------------------------------------------- */
-#include <ei-v20unknown-1popGoRight-2waterGoLeft-3fast-v2-0-0_inferencing.h>
+#include <ei-v6-0-1-fomo-2.8.0mbed-96x96-vision-1pop_inferencing.h>
+
+
+
 #include "edge-impulse-advanced.h"
 #include <Adafruit_SSD1327.h>
 
@@ -65,6 +67,11 @@ int x1Map, x2Map, y1Map, y2Map;
 #define CUTOUT_ROWS                 EI_CLASSIFIER_INPUT_HEIGHT
 const int cutout_row_start = (EI_CAMERA_RAW_FRAME_BUFFER_ROWS - CUTOUT_ROWS) / 2;
 const int cutout_col_start = (EI_CAMERA_RAW_FRAME_BUFFER_COLS - CUTOUT_COLS) / 2;
+
+
+
+
+
 
 
 /**
@@ -181,69 +188,43 @@ void loop(){
     }
 
 
-    int myBestClassificationNumber = -1;  
-    float myBestClassificationValue = 0.25;   // lowest best allowable value
-    
-    
-    // print the predictions
-    // Serial.println("Predictions ");
-    // For complex prints best to run Edge Impulse ei_printf
-    ei_printf("(DSP: %d ms., Classification: %d ms., Anomaly: %d ms.)",
-        result.timing.dsp, result.timing.classification, result.timing.anomaly);
-    ei_printf(": \n");
-    for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-       // ei_printf("    %s: %.5f\n", result.classification[ix].label, result.classification[ix].value);
-
-        if (result.classification[ix].value > myBestClassificationValue ){
-           myBestClassificationNumber = ix;                      // find the biggest array value
-           myBestClassificationValue = result.classification[ix].value;  
+    bool bb_found = result.bounding_boxes[0].value > 0;
+    for (size_t ix = 0; ix < EI_CLASSIFIER_OBJECT_DETECTION_COUNT; ix++) {
+        auto bb = result.bounding_boxes[ix];
+        if (bb.value == 0) {
+            continue;
         }
 
-  
+        ei_printf("    %s (", bb.label);
+        ei_printf_float(bb.value);
+        ei_printf(") [ x: %u, y: %u, width: %u, height: %u ]\n", bb.x, bb.y, bb.width, bb.height);
+        display.setCursor(bb.x, bb.y-10);
+        display.println(bb.label);
+        
+        // fake mapping
+        display.drawRect(bb.x/2, bb.y/2, bb.width*3, bb.height*3, SSD1327_WHITE ); 
     }
+
+    if (!bb_found) {
+        ei_printf("    No objects found\n");
+    }
+
+
+
     
 #if EI_CLASSIFIER_HAS_ANOMALY == 1
     Serial.println("    anomaly score: " + String(result.anomaly, 5));
 #endif
-
-
+   
     digitalWrite(LEDB, HIGH);   //on board LED's are turned off by HIGH    
     digitalWrite(LEDG, HIGH);   
     digitalWrite(LEDR, HIGH); 
-/*
-    // I find it less confusing if the 0unknown does nothing
-    if (myBestClassificationNumber == 0){    // 0 unknown do nothing
-        digitalWrite(LEDB, LOW);    
-        digitalWrite(LEDG, LOW);   
-       // Serial.println("0 unknown: " + String(myBestClassificationValue,2));
-       display.setCursor(5,110);
-       display.println("0 Unknown: " + String(myBestClassificationValue,2));
-    }
- */
 
-    if (myBestClassificationNumber == 1){   // 1pop: Go Right
-      digitalWrite(LEDB, LOW);              // Blue LED on
-      ei_printf("1Pop Go Right: %.5f\n", myBestClassificationValue);
-      display.setCursor(5,110);
-      display.println("1Pop Go Right:" + String(myBestClassificationValue,2));
-    }
-    
-    if (myBestClassificationNumber == 2){   // 2water : go left
-      digitalWrite(LEDG, LOW);              // Green LED on  
-      ei_printf("2Water Go Left: %.5f\n", myBestClassificationValue);
-      display.setCursor(5,110);
-      display.println("2Water Go Left:" + String(myBestClassificationValue,2));
-    }
-    
-    if (myBestClassificationNumber == 3){   // 3fast got straight
-      digitalWrite(LEDR, LOW);              // Red LED on         
-      ei_printf("3Both Go Fast: %.5f\n", myBestClassificationValue);
-      display.setCursor(5,110);
-      display.println("3Both Go Fast:" + String(myBestClassificationValue,2));
-    }
-
-     // put more if statements here for your model
-
+   if (bb_found) {    // if objects are found lets load some lights
+     if (EI_CLASSIFIER_OBJECT_DETECTION_COUNT % 3 == 0) { digitalWrite(LEDR, LOW); } // red on
+     if (EI_CLASSIFIER_OBJECT_DETECTION_COUNT % 3 == 1) { digitalWrite(LEDG, LOW); } // green on
+     if (EI_CLASSIFIER_OBJECT_DETECTION_COUNT % 3 == 2) { digitalWrite(LEDB, LOW); } // blue on
+   }
 
 
      // Last thing is to show the 128x128 GRAYSCALE OLED
