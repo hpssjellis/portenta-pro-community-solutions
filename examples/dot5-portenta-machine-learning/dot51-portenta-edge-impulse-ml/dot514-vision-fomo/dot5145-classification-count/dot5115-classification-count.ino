@@ -20,16 +20,61 @@
  * SOFTWARE.
  * 
  * 
+ *  FOR the GRAYSCALE Waveshare OLED 128 x 128 using library Adafruit_SSD1327.h
+ *   blue  DIN (mosi) D8
+ *   yellow (sck) D9                                                                                                                                                             
+ *   orange (cs) D7
+ *   green (dc)  D6
+ *   white (reset) not needed but D14 if you did
+ *
+ * another reference here 
+ * https://learn.adafruit.com/adafruit-gfx-graphics-library/graphics-primitives
+ *
+ * Note1: Should work with any Edge Impulse model just change the below include to your model name
  */
+
+
+ 
 /* Includes ---------------------------------------------------------------- */
-#include <ei-v20unknown-1popGoRight-2waterGoLeft-3fast-v2-0-0_inferencing.h>
+
+//#include <ei-v1-0-minst_inferencing.h>  // 160 x 160
+
+
+#include <ei-v6-0-1-fomo-2.8.0mbed-96x96-vision-1pop_inferencing.h>
+
+
+
 #include "edge-impulse-advanced.h"
+#include <Adafruit_SSD1327.h>
 
+// Used for software SPI
+#define OLED_CLK D9
+#define OLED_MOSI D8
 
+// Used for software or hardware SPI
+#define OLED_CS D7
+#define OLED_DC D6
+
+// Used for I2C or SPI
+#define OLED_RESET -1
+
+// hardware SPI
+Adafruit_SSD1327 display(128, 128, &SPI, OLED_DC, OLED_RESET, OLED_CS);
 
 // Global Variables
-int myDelay = 500;  // delay between readings, can be zero, default 2000 = 2 seconds
-int myClassCount[EI_CLASSIFIER_LABEL_COUNT]; // array to store all counts
+int myDelay = 0;  // delay between readings, can be zero, default 2000 = 2 seconds
+int x1Map, x2Map, y1Map, y2Map;
+//int myClassCount[EI_CLASSIFIER_LABEL_COUNT]; // not yet used
+
+// the OLED uses these
+#define CUTOUT_COLS                 EI_CLASSIFIER_INPUT_WIDTH
+#define CUTOUT_ROWS                 EI_CLASSIFIER_INPUT_HEIGHT
+const int cutout_row_start = (EI_CAMERA_RAW_FRAME_BUFFER_ROWS - CUTOUT_ROWS) / 2;
+const int cutout_col_start = (EI_CAMERA_RAW_FRAME_BUFFER_COLS - CUTOUT_COLS) / 2;
+
+int myTotalObjects = 0;
+
+
 
 
 
@@ -69,6 +114,26 @@ void setup()
             }
         }
     }
+    
+    // Following for the Grayscale OLED
+
+   if ( ! display.begin(0x3D) ) {   // start Grayscale OLED
+     Serial.println("Unable to initialize OLED");
+     while (1) yield();
+  }    
+    display.setTextSize(1);
+    display.setTextColor(SSD1327_WHITE);
+
+    display.setRotation(0);
+    display.setCursor(0,0);
+
+    //   map cutout of the 320 x 320   // 240 model to OLED 128 x 64 screen
+    x1Map = map((int)cutout_col_start, 0, 320, 0, 127);  
+    x2Map = map((int)CUTOUT_COLS, 0, 320, 0, 127);
+    y1Map = map((int)cutout_row_start, 0, 320, 0, 127);
+    y2Map = map((int)CUTOUT_ROWS, 0, 320, 0, 127);
+
+    
 }
 
 /**
@@ -76,16 +141,36 @@ void setup()
 *
 * @param[in]  debug  Get debug info if true
 */
-void loop()
-{
-    Serial.println("Starting inferencing in "+String(myDelay)+" microseconds...");
-
+void loop(){
+  
     // instead of wait_ms, we'll wait on the signal, this allows threads to cancel us...
     if (ei_sleep(myDelay) != EI_IMPULSE_OK) {
         return;
     }
+    
+    Serial.println("Starting inferencing in "+String(myDelay)+" microseconds...");
+
+    // Put the image on the OLED
+    display.clearDisplay();                 // clear the internal memory for OLED
+    for (int x=0; x < EI_CAMERA_RAW_FRAME_BUFFER_COLS; x++){     // EI_CAMERA_RAW_FRAME_BUFFER_COLS = 320
+      for (int y=0; y < EI_CAMERA_RAW_FRAME_BUFFER_ROWS; y++){       //EI_CAMERA_RAW_FRAME_BUFFER_ROWS = 320   //240
+      
+        uint8_t myGRAY = ei_camera_frame_buffer[(y * (int)EI_CAMERA_RAW_FRAME_BUFFER_COLS) + x];  
+
+          int myGrayMap = map(myGRAY, 0, 255, 0, 15);  
+          int xMap = map(x, 0, 320, 0, 127);
+          int yMap = map(y, 0, 320, 0, 127);
+          display.drawPixel(xMap, yMap, myGrayMap );   // grayscale 0-255, 128x128  //128 x 64
+      } 
+    }
+
+    display.drawRect(2, 2,   126, 126, SSD1327_WHITE );  // rectangle around outside of OLED
+
+    display.setCursor(20,5);
+    display.println("Rocksetta: ");
 
 
+    
     ei::signal_t signal;
     signal.total_length = EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT;
     signal.get_data = &ei_camera_cutout_get_data;
@@ -104,65 +189,56 @@ void loop()
         return;
     }
 
+  
 
-    int myBestClassificationNumber = -1;  
-    float myBestClassificationValue = 0.25;   // lowest best allowable value
     
-    
-    // print the predictions
-   // Serial.println("Predictions ");
-    // For complex prints best to run Edge Impulse ei_printf
-    ei_printf("(DSP: %d ms., Classification: %d ms., Anomaly: %d ms.)",
-        result.timing.dsp, result.timing.classification, result.timing.anomaly);
-    ei_printf(": \nTotals:");
-    for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-        ei_printf("%s: %d\n", result.classification[ix].label, myClassCount[ix]);
-
-        if (result.classification[ix].value > myBestClassificationValue ){
-           myBestClassificationNumber = ix;                      // find the biggest array value
-           myBestClassificationValue = result.classification[ix].value;  
+    bool bb_found = result.bounding_boxes[0].value > 0;
+    for (size_t ix = 0; ix < EI_CLASSIFIER_OBJECT_DETECTION_COUNT; ix++) {
+        auto bb = result.bounding_boxes[ix];
+        if (bb.value == 0) {
+            continue;
         }
 
-    }        
-    ei_printf(": \n");
+        ei_printf("    %s (", bb.label);
+        ei_printf_float(bb.value);
+        ei_printf(") [ x: %u, y: %u, width: %u, height: %u ]\n", bb.x, bb.y, bb.width, bb.height);
+        display.setCursor(bb.x, bb.y-5);
+        display.println(String(bb.label).substring(0, 4) );  // only print the start of the label
+
+        int xMap = map(bb.x, 0,96, 0,127);
+        int yMap = map(bb.y, 0,96, 0,127);
+        int widthMap = map(bb.width, 0,96, 0,127);
+        int heightMap = map(bb.height, 0,96, 0,127);
+        
+        display.drawRect(xMap, yMap, widthMap, heightMap, SSD1327_WHITE ); 
+        myTotalObjects += EI_CLASSIFIER_OBJECT_DETECTION_COUNT;
+
+    }
+
+    if (!bb_found) {
+        ei_printf("    No objects found\n");
+    }
+
+
+
     
 #if EI_CLASSIFIER_HAS_ANOMALY == 1
     Serial.println("    anomaly score: " + String(result.anomaly, 5));
 #endif
-
-
+   
     digitalWrite(LEDB, HIGH);   //on board LED's are turned off by HIGH    
     digitalWrite(LEDG, HIGH);   
     digitalWrite(LEDR, HIGH); 
 
-    // I find it less confusing if the 0unknown does nothing
-    if (myBestClassificationNumber == 0){    // 0 unknown do nothing
-        myClassCount[0] += 1;
-        digitalWrite(LEDB, LOW);    
-        digitalWrite(LEDG, LOW);   
-        ei_printf("0: Unknown: %.5f, total: %d\n", myBestClassificationValue, myClassCount[0]);
-    }
- 
+   if (bb_found) {    // if objects are found lets load some lights
+     if (EI_CLASSIFIER_OBJECT_DETECTION_COUNT % 3 == 0) { digitalWrite(LEDR, LOW); } // red on
+     if (EI_CLASSIFIER_OBJECT_DETECTION_COUNT % 3 == 1) { digitalWrite(LEDG, LOW); } // green on
+     if (EI_CLASSIFIER_OBJECT_DETECTION_COUNT % 3 == 2) { digitalWrite(LEDB, LOW); } // blue on
+   }
 
-    if (myBestClassificationNumber == 1){   // 1pop: Go Right
-      myClassCount[1] += 1;
-      digitalWrite(LEDB, LOW);              // Blue LED on
-      ei_printf("1: Pop Go right: %.5f, total: %d\n", myBestClassificationValue, myClassCount[1]);
-    }
-    
-    if (myBestClassificationNumber == 2){   // 2water : go left
-      myClassCount[2] += 1;
-      digitalWrite(LEDG, LOW);              // Green LED on  
-      ei_printf("2: Water Go Left: %.5f, total: %d\n", myBestClassificationValue, myClassCount[2]);
-    }
-    
-    if (myBestClassificationNumber == 3){   // 3fast got straight
-      myClassCount[3] += 1;
-      digitalWrite(LEDR, LOW);              // Red LED on         
-      ei_printf("3: Both Go Fast: %.5f, total: %d\n", myBestClassificationValue, myClassCount[3]);
-    }
-
-    // put more if statements here for your model
-
-    Serial.println();
+        display.setCursor(80,5); // near the top
+        display.println(String(myTotalObjects));
+        
+     // Last thing is to show the 128x128 GRAYSCALE OLED
+     display.display();  // OLED 4 bit 16 color GRAYSCALE update
 }
