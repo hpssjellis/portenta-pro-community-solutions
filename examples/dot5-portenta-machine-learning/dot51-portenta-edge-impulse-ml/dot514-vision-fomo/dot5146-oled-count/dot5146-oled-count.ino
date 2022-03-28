@@ -44,7 +44,7 @@
 #include <map>
 
 
-#include "edge-impulse-advanced.h"
+#include "edge-impulse-advanced-v2.h"
 #include <Adafruit_SSD1327.h>
 
 // Used for software SPI
