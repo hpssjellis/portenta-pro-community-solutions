@@ -25,7 +25,7 @@
 #include <ei-v6-0-1-fomo-2.8.0mbed-96x96-vision-1pop_inferencing.h>
 
 //#include <ei-v20unknown-1popGoRight-2waterGoLeft-3fast-v2-0-0_inferencing.h>
-#include "edge-impulse-advanced.h"
+#include "edge-impulse-advanced-v2.h"
 
 // Global Variables
 int myDelay = 0;  // delay between readings, can be zero, default 2000 = 2 seconds
