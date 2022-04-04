@@ -2,8 +2,10 @@
 #include "Arduino.h"
 //#include "WiFi.h"
 
-//#include "TinyMqttPortenta.h"   // https://github.com/hsaturn/TinyMqtt
-#include "portneta-pro-community-solutions.h"   // https://github.com/hsaturn/TinyMqtt
+
+#include "TinyMqttPortenta.h"   // Grab zipped library from https://github.com/hpssjellis/tinyMqttPortentaWiFiV2
+//The original is at  https://github.com/hsaturn/TinyMqtt
+
 
 /** Basic Mqtt Broker
   *
