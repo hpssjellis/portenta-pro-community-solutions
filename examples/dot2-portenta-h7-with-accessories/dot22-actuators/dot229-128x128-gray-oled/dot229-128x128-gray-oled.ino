@@ -1,6 +1,6 @@
 /*
  * 
- * Must use portenta with Vision camerera and Waveform OLED 
+ * Must use portenta with Vision Shield Camera and Waveform 128x128 grayscale OLED 
  * Until then needs the 2 main library folders Portenta_Camera and Himax_HM01B0
  * 
  * 
