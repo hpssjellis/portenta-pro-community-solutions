@@ -1,22 +1,17 @@
 /*
  * 
- * Must use portenta with Vision camerera and Grove OLED 
- * Should be implemented with MBED version greater than 1.4.2
+ * Must use portenta with Vision camerera and Waveform OLED 
  * Until then needs the 2 main library folders Portenta_Camera and Himax_HM01B0
  * 
  * 
  *
  * Purchase here https://www.waveshare.com/1.5inch-OLED-Module.htm about $29 USD
  *
- * Note u8g2 is an arduino search caplble library, easy to install
- *
- *  using 128 x 64 seeeduino OLED
- *  black GND 
- *  red 3v3      so do not need the protective resistors below
- *  //white SDA    D11 // on portenta
- *  //yellow SCL   D12 // on portenta
- *  
+
+
  *  FOR the GRAYSCALE Waveshare OLED
+ *   black GND 
+ *   red 3v3     
  *   blue  DIN (mosi) D8
  *   yellow (sck) D9 
  *   orange (cs) D7
