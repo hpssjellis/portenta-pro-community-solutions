@@ -21,6 +21,8 @@
  * 
  * 
  *  FOR the GRAYSCALE Waveshare OLED 128 x 128 using library Adafruit_SSD1327.h
+ *   Red     3v3
+ *   Black   GND 
  *   blue  DIN (mosi) D8
  *   yellow (sck) D9                                                                                                                                                             
  *   orange (cs) D7
