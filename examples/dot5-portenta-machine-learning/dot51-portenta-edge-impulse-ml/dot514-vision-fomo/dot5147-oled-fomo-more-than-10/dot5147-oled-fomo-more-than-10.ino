@@ -21,12 +21,13 @@
  * 
  * 
  *  FOR the GRAYSCALE Waveshare OLED 128 x 128 using library Adafruit_SSD1327.h
- *   
- *   blue  DIN (mosi) D8
+ *   red    3V3
+ *   black  GND
+ *   blue   DIN (mosi) D8
  *   yellow (sck) D9                                                                                                                                                             
  *   orange (cs) D7
- *   green (dc)  D6
- *   white (reset) not needed but D14 if you did
+ *   green  (dc)  D6
+ *   white  (reset) not needed but D14 if you did
  *
  * another reference here 
  * https://learn.adafruit.com/adafruit-gfx-graphics-library/graphics-primitives
