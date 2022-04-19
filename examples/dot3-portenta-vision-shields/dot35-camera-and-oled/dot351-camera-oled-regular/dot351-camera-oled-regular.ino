@@ -1,7 +1,8 @@
 /*
  * 
- * Must use portenta with Vision camerera and wAVESHARE gRAYSCALE 128X128 oled
+ * Must use portenta with Vision camerera and Waveshare grayscale 128X128 oled
  * Should be implemented with MBED version greater than 3.0.0
+ * No special considerations for the frame buffer memory
  *
  * Purchase here https://www.waveshare.com/1.5inch-OLED-Module.htm about $29 USD
  *
