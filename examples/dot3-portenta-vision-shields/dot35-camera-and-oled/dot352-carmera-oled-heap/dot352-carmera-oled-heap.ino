@@ -1,9 +1,8 @@
 /*
  * 
- * Must use portenta with Vision camerera and wAVESHARE gRAYSCALE 128X128 oled
- * Should be implemented with MBED version greater than 3.0.0
- *
- * Camera memory frame buffer should use the heap
+ * Must use portenta with Vision shield camera and Waveshare Grayscale 128 x 128 OLED
+ * Should be implemented with MBED version greater than 2.8.0
+ * Puts the camera framebuffer onto the heap.
  *
  * Purchase here https://www.waveshare.com/1.5inch-OLED-Module.htm about $29 USD
  *
@@ -20,13 +19,20 @@
  * another reference here 
  * https://learn.adafruit.com/adafruit-gfx-graphics-library/graphics-primitives
  *
+ * Use at your own risk!
+ * By @rocksetta
+ * MIT license
+ *
+ *
  */
 
  
  
 #include <Arduino.h>  // only needed for https://platformio.org/
 
-#include <Adafruit_SSD1327.h>
+#include <Adafruit_SSD1327.h> // for OLED
+#include "camera.h"
+#include "himax.h"
 
 // Used for software SPI
 #define OLED_CLK D9  //yellow wire
@@ -43,11 +49,9 @@
 Adafruit_SSD1327 display(128, 128, &SPI, OLED_DC, OLED_RESET, OLED_CS);
 
 
-#include "camera.h"
-#include "himax.h"
+
 HM01B0 himax;
 Camera cam(himax);
-#define IMAGE_MODE CAMERA_GRAYSCALE
 
 /*
 Other buffer instantiation options:
@@ -65,8 +69,8 @@ void setup() {
   Serial.begin(115200);  
 
   // Init the cam 
- // cam.begin(CAMERA_R320x320, IMAGE_MODE, 30);
-  cam.begin(CAMERA_R320x320, IMAGE_MODE, 60);
+  // cam.begin(CAMERA_R320x320, IMAGE_MODE, 30);
+  cam.begin(CAMERA_R320x320, CAMERA_GRAYSCALE, 60);  // 60 FPS?
 
   if ( ! display.begin(0x3D) ) {
      Serial.println("Unable to initialize OLED");
@@ -78,13 +82,14 @@ void setup() {
     display.setRotation(0);
     display.setCursor(0,0);
 
-   // set framebuffer into heap
+    // set framebuffer onto the heap
     ei_camera_frame_mem = (uint8_t *) malloc(320 * 320 + 32 /*alignment*/);
     if(ei_camera_frame_mem == NULL) {
-        Serial.println("failed to create ei_camera_frame_mem"); 
+        Serial.println("failed to create ei_camera_frame_mem");
+        
     }
     frame_buffer = (uint8_t *)ALIGN_PTR((uintptr_t)ei_camera_frame_mem, 32);
-   
+    fb.setBuffer(frame_buffer); 
 }
 
 void loop() {
@@ -92,7 +97,6 @@ void loop() {
     
   if (cam.grabFrame(fb, 3000) == 0) {
      // Serial.write(fb.getBuffer(), cam.frameSize());
-    fb.setBuffer(frame_buffer); 
 
     for (int x=0; x < 320; x++){     // FRAME_BUFFER_COLS = 320
        for (int y=0; y < 320; y++){       //FRAME_BUFFER_ROWS = 320
@@ -101,7 +105,7 @@ void loop() {
           int myGrayMap = map(myGRAY, 0, 255, 0, 15);  
           int xMap = map(x, 0, 320, 0, 127);
           int yMap = map(y, 0, 320, 0, 127);
-          display.drawPixel(xMap, yMap, myGrayMap );   // grayscale 0-255, 128x128  //128 x 64
+          display.drawPixel(xMap, yMap, myGrayMap );   // grayscale 0-255, 128x128  
       } 
     }     
   }
@@ -113,5 +117,3 @@ void loop() {
   display.display();
        
 }
-
-
