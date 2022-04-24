@@ -59,7 +59,7 @@ Other buffer instantiation options:
 
 FrameBuffer fb;
 
-static uint8_t frame_buffer[320*320*2] __attribute__((aligned(32)));
+static uint8_t frame_buffer[320*320] __attribute__((aligned(32)));
 
 void setup() {
   Serial.begin(115200);  
