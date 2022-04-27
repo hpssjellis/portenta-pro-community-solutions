@@ -51,7 +51,7 @@ void myLedBlue_thread(){
     Serial.print("\nThread Stack Info:");
     for (int i = 0; i < MAX_THREAD_INFO; i++) {
         if (stack_info[i].thread_id != 0) {
-            Serial.print("\n\tThread: %d"+String(  i));
+            Serial.print("\n\tThread: " + String(i) );
             Serial.print("\n\t\tThread Id: 0x"+String(  stack_info[i].thread_id) + "8lX");
             Serial.print("\n\t\tMaximum number of bytes used on the stack: "+String( stack_info[i].max_size));
             Serial.print("\n\t\tCurrent number of bytes allocated for the stack: "+String( stack_info[i].reserved_size));
@@ -59,7 +59,7 @@ void myLedBlue_thread(){
         }
     }
 
-
+      Serial.print(F("End of Data ------------------------"));
       
       ThisThread::sleep_for(15000);
       
