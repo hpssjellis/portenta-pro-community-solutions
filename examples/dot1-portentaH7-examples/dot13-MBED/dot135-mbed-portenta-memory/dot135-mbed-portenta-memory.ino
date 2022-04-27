@@ -59,7 +59,7 @@ void myLedBlue_thread(){
         }
     }
 
-      Serial.print(F("End of Data ------------------------"));
+      Serial.print(F("\nEnd of Data ------------------------"));
       
       ThisThread::sleep_for(15000);
       
