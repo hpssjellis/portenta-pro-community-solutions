@@ -148,8 +148,8 @@ void loop() {
 
     
       lpp.reset();
-      float x = rand() / 10000000.0; //analogRead(A0)
-      lpp.addTemperature(1, x); 
+      float x = analogRead(A0); //analogRead(A0) or rand() / 10000000.0; 
+      lpp.addDigitalOutput(1, x); 
     
       
       /*
