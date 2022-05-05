@@ -1,7 +1,7 @@
 /*
   Helium Send And Receive
 
-   For Adafruit non-CayeenLPP connections for simple sensor Bae 64 encoded
+   For Adafruit non-CayeenLPP connections for simple sensor Base 64 encoded
 
   In Helium "functions" section  use this decoder
 
@@ -25,7 +25,7 @@
   
   This sketch demonstrates how to send and receive data with the MKR WAN 1300/1310 LoRa module.
   This example code is in the public domain.
-  note: Helium must be setup for what it does with the CayenneLPP encoded data
+  note: Helium must be setup for what it does with the data
 */
 
 #include <Arduino.h> // Only needed by https://platformio.org/
