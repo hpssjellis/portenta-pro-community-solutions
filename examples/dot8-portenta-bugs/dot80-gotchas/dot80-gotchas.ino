@@ -1,5 +1,23 @@
 /*  For any gotchas that might not be obvious to a new user
 *
+*
+*
+*  Note: The Wifi updator also updates the CERT used for Ethernet SSL!   May 2022  Arduino MBED Core Version 3.01
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
 *  Example: A0, A1, A2, A3 not to be used for general GPIO 
 *  All Analog pins are not to be used for PWM
 *
