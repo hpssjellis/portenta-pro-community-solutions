@@ -127,11 +127,12 @@ void loop() {
         myWaitForDownlink = false;
         myDownLink = false;
         Serial.print("Received: ");
-        for (unsigned int j = 0; j < i; j++) {
-          Serial.print(rcv[j] >> 4, HEX);
-          Serial.print(rcv[j] & 0xF, HEX);
-          Serial.print(" ");
-        }
+        Serial.write(rcv, i);
+       // for (unsigned int j = 0; j < i; j++) {
+       //   Serial.print(rcv[j] >> 4, HEX);
+       //   Serial.print(rcv[j] & 0xF, HEX);
+       //   Serial.print(" ");
+       // }
         Serial.println();
         digitalWrite(LEDR, LOW); // new boards HIGH = off
         digitalWrite(LEDG, HIGH);
