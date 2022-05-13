@@ -22,7 +22,7 @@
         "mbed",
         "mbed_portenta",
         "mbed_nano",
-        "samd"
+        "SEEED_XIAO_M0"
     ],
   "export": {
     "exclude": ["media", "research-not-ready", "zipped-libraries"]
