@@ -25,7 +25,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("Serial print works on the M7 core only.");
+  Serial.println("Serial print works on the Portenta M7 core only. Here is A0 reading: " + String(analogRead(A0)) );
   digitalWrite(LED_BUILTIN, LOW);   // internal LED LOW = on for onboard LED
   delay(1000);                      // wait for a second
   digitalWrite(LED_BUILTIN, HIGH);  
