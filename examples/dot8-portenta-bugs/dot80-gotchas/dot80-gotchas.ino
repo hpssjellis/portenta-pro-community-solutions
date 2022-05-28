@@ -8,9 +8,11 @@
 *
 *
 *
-*  A3 digital output does not work if A5 is also connected for digital output
-*  A2 digital output does not work if A4 is also connected for digital output
+*  A3 digital output does not work if A5 or D8 is also connected for digital output. 
+*  The above will be a pain for SPI connections using MOSI (COPI) D8
 *
+*  A2 digital output does not work if A4 or D10 is also connected for digital output 
+*  The above will be a pain for SPI connections using MISO (CIPO) D8
 * see isue   https://github.com/arduino/ArduinoCore-mbed/issues/488
 *
 *
