@@ -8,9 +8,10 @@
 *
 *
 *
+*  A3 digital output does not work if A5 is also connected for digital output
+*  A2 digital output does not work if A4 is also connected for digital output
 *
-*
-*
+* see isue   https://github.com/arduino/ArduinoCore-mbed/issues/488
 *
 *
 *
