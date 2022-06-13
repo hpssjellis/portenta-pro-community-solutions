@@ -17,13 +17,7 @@
   },
   "version":"0.9.0",
   "frameworks": "arduino",
-  "platforms":     
-  [
-        "mbed",
-        "mbed_portenta",
-        "mbed_nano",
-        "SEEED_XIAO_M0"
-    ],
+  "platforms": "*",
   "export": {
     "exclude": ["media", "research-not-ready", "zipped-libraries"]
   }
