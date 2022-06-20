@@ -29,6 +29,8 @@
 
 /* Arduino_LSM9DS1 is a standard Arduino library that you should be able to search for- */
 #include <Arduino_LSM9DS1.h>
+// #include <MKRIMU.h>   // If using the MKRIMU with the portenta bend out the RESET pin and use this library include file
+
 
 /* Constant defines -------------------------------------------------------- */
 #define CONVERT_G_TO_MS2    9.80665f
