@@ -148,7 +148,7 @@ void loop() {
 
           
           // const char msg[] = "Hello";  // more standard way to send it
-          mySendTXT(2, msg, strlen(msg)); //1=text or 2=binary or anything else = binary
+          mySendTXT(1, msg, strlen(msg)); //1=text or 2=binary or anything else = binary
            
                       
        } // now send
