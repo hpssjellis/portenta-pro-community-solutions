@@ -64,14 +64,15 @@ uint8_t ucAlphaPal[256] = {0,255}; // first color (black) is fully transparent
 //uint8_t ucOut[20480];  // compiles
 //uint8_t ucOut[30720];  // compiles
 //uint8_t ucOut[40960];  // compiles  
-uint8_t ucOut[81920];    // works for 320x320 
+//uint8_t ucOut[81920];  // works for 320x320 
+uint8_t ucOut[98304];    // works best fewer bad images
 
 // could use heap or Portenta SDRAM
 static uint8_t frame_buffer[CAM_WIDTH*CAM_HEIGHT] __attribute__((aligned(32)));
 
 char myFolder[10];
 // probably a really good idea to have myDealy greater than 3000 or you will fill up the SD card quickly
-int myDelay = 10000;  // default take a picture every 10 seconds
+int myDelay = 10000; // much more fun to to 500;  // default take a picture every 10 seconds
 int randomNumber = 0;
 
 
