@@ -64,10 +64,10 @@
 
 //#include <ei-fomo-v21-just-eye_inferencing.h>
 
-// marker 2: comment the next line out if you don't want to use the 128x128 grayscale OLED
-// Makes your code ~65 ms faster.
+// marker 2: comment the next line of code out if you don't want to use the 128x128 grayscale OLED
+// Makes your 200ms code ~65 ms faster.
 
-//  #define USE-GRAY-OLED
+  #define USE-GRAY-OLED
 
 
 
@@ -84,7 +84,6 @@
 #include "rtos.h"
 //using namespace mbed;  // sometimes needed
 using namespace rtos;
-
 
 
 #ifdef USE-GRAY-OLED
@@ -108,8 +107,6 @@ using namespace rtos;
 #endif
 
 
-
-
 // Global Variables
 int myDelay = 0;  // delay between readings, can be zero, default 2000 = 2 seconds
 int x1Map, x2Map, y1Map, y2Map;
@@ -120,7 +117,6 @@ int x1Map, x2Map, y1Map, y2Map;
 #define CUTOUT_ROWS                 EI_CLASSIFIER_INPUT_HEIGHT
 const int cutout_row_start = (EI_CAMERA_RAW_FRAME_BUFFER_ROWS - CUTOUT_ROWS) / 2;
 const int cutout_col_start = (EI_CAMERA_RAW_FRAME_BUFFER_COLS - CUTOUT_COLS) / 2;
-
 
 
 // main thread for the servo and dc motor to keep their operation away from the analysis
@@ -138,8 +134,6 @@ int myTurning = 0;
 int myServoAngle = 0;
 
 
-
-
 // might still use
 //const float MY_FOMO_CUTOFF = 0.85;    // default 0.85;
 
@@ -152,12 +146,13 @@ const int MY_SERVO_STRAIGHT = 90;
 const int MY_SERVO_SLIGHT_HIGH = 100;
 const int MY_SERVO_MAX = 120;
 
+const int MY_MEASURE_MIN = -30;   // -20 left flatter turning, -40 sharper turning
+const int MY_MEASURE_MAX =  30;   // 20 right flatter turning, 40 sharper turning
 
 
 // Stops all sharp turns from random errors.
 //int myServoChangeAmount = 20;  //  default 2 to 10 degrees. how much to change the turn angle if a change is needed.
 int myServoNow = MY_SERVO_STRAIGHT;    // start going straight
-
 
 
 const int MY_PWM_MIN = 33;      // 25
@@ -189,9 +184,6 @@ void myLedBlue_myThread01(){
 }
 
 
-
-
-
 /**
 * @brief      Arduino setup function
 */
@@ -215,12 +207,7 @@ void setup(){
 
     digitalWrite(D1, 0);    // set one direction   
     digitalWrite(D3, 1);       // set one direction 
-
-
-
-
-
-    
+   
 #ifdef EI_CAMERA_FRAME_BUFFER_SDRAM
     // initialise the SDRAM
     SDRAM.begin(SDRAM_START_ADDRESS);
@@ -304,11 +291,9 @@ void loop(){
 
 #endif
 
-
     myGlobalCount = 0;  // how many acceptable objects
    // myPwmOld = myPwmNow; 
     myPwmNow = 0;   //  iF no objects we want the car to stay stopped
-
 
 
     ei::signal_t signal;
@@ -337,9 +322,7 @@ void loop(){
       int my0 = 0;  // for background info
       int my9 = 0;
       
-
-
-        
+       
     bool bb_found = result.bounding_boxes[0].value > 0;
     for (size_t ix = 0; ix < EI_CLASSIFIER_OBJECT_DETECTION_COUNT; ix++) {
     
@@ -396,9 +379,6 @@ void loop(){
    
 
 
-
-
-
 //--------------------------- start new stuff----------------------
 
        // mark 8: This is the important student area where we do stuff to drive the car.
@@ -418,16 +398,22 @@ void loop(){
         
           digitalWrite(D1, 0);   // zero forward, both break
           digitalWrite(D3, 1);    // 1 forward,    neither glide  
-
-
+ 
           myTurning = (int)myBbxAverage - MY_MIDDLE_X;    // 48 for middle location may change
         
-          
-          
+         
           // make the angles bigger by making the mapping smaller to offset averaging many X values
-          // myServoAngle = map(myTurning, -20,20, MY_SERVO_MIN, MY_SERVO_MAX); // raw position to car turn angle
-          myServoAngle = map(myTurning, -30,30, MY_SERVO_MIN, MY_SERVO_MAX); // raw position to car turn angle
-          // myServoAngle = map(myTurning, -40,40, MY_SERVO_MIN, MY_SERVO_MAX); // raw position to car turn angle
+          myServoAngle = map(myTurning, MY_MEASURE_MIN,MY_MEASURE_MAX, MY_SERVO_MIN, MY_SERVO_MAX); // raw position to car turn angle
+
+
+
+
+        // marker 9: The following code is my attempt to change the speed of the car
+        // It is not needed you could just have the car go one speed
+        //  myPwmNow = MY_PWM_MIN;
+
+
+////////////////////////////////////////////////////////////////////////////////////////
 
 
          // If the angle is near the center do these else go minimum speed
@@ -436,18 +422,19 @@ void loop(){
            // Set LED's to be blue // showing near the center average
            digitalWrite(LEDR, HIGH);    
            digitalWrite(LEDG, HIGH);     
-           digitalWrite(LEDB, LOW);           
+           digitalWrite(LEDB, LOW); 
+                     
            if (myDivider >= 3 ){ // more than or equal to 3 objects go fast!        
               myPwmNow = MY_PWM_MAX;  //go fast 
               myServoAngle = MY_SERVO_STRAIGHT; // go straight if fast
            } 
            // If the angle is near the center and 2  are detected then go middle speed. 
            if ( myDivider == 2 ){
-              myPwmNow = MY_PWM_MEDIUM;  // Go Medium 
+              myPwmNow = MY_PWM_MEDIUM;  // Go medium speed
            }         
            // If the angle is near the center and 1 object then go slow.
            if (myDivider == 1 ){
-               myPwmNow = MY_PWM_SLOW;  //go 2/3 slow speed   
+               myPwmNow = MY_PWM_SLOW;  //go kind of slow   
            }
          } else {  // else objects not near the center so go slow
             
@@ -455,8 +442,11 @@ void loop(){
            digitalWrite(LEDR, HIGH);    
            digitalWrite(LEDG, LOW);     
            digitalWrite(LEDB, HIGH);
-           myPwmNow = MY_PWM_MIN;  //go slow       
+           myPwmNow = MY_PWM_MIN;  //go really slow       
         }
+
+        // end of marker 9:
+///////////////////////////////////////////////////////////////////////////////////////
          
 
         // this check is now not really needed
@@ -487,7 +477,7 @@ void loop(){
 
 //-------------------------------- end new stuff -------------------------------
       
-       // marker 9: This area is just printing the information to the serial monitor
+       // marker 10: This area is just printing the information to the serial monitor
    
        Serial.print(F("Time(ms):"));
        int myFomoTime = millis() - myStart;
