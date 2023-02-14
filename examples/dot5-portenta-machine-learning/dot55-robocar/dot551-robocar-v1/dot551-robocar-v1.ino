@@ -2,6 +2,10 @@
 
 /*
  * Base RC Robocar FOMO 96x96 with DC motor, servo and OLED all on the M7 core
+ * 
+ * Build instructions will eventually be ready at 
+ * https://github.com/hpssjellis/robocar
+ *
  * Code can be run without any attachments except the Portenta H7 Vision Shield and the serial monitor will work
  * with the servo and Big Motor sdriver the car will work
  * With the grayscale OLED it can work for debugging without the car.
@@ -12,6 +16,7 @@
  * 
  * 
  * Use at your own risk!
+ * MIT license
  * by Jeremy Ellis Twitter @rocksetta
  * 
  * Basic Pins
