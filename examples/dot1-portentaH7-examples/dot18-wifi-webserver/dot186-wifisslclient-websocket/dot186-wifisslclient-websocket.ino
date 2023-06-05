@@ -31,6 +31,7 @@ char HTTPS_PATH[] = "/";
 // Note: Gitpod server link looks like https://8080-hpssjellis-gitpodporten-685bxri4ie6.ws-us80.gitpod.io
 //    Note: If you open this URL you get to the browser websocket client ran by the websoket server on codesandbox
 //    https://4fh42v-8080.preview.csb.app/
+// https://codesandbox.io/p/github/hpssjellis/codesandbox-websocket/main
 
 // no certificate needed, Arduino has made it already a part of the SSLclient.
 
