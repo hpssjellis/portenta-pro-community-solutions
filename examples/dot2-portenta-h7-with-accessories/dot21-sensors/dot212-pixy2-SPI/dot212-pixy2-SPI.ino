@@ -2,6 +2,13 @@
 
 // b-pixy2-SPI.ino
 
+-------------------------------------------------------------------------
+
+Best to use the Portenta Pro Community solutions arduino library
+and load the menu accessoies--> sensors --> dot212-pixy2-SPI    sketch.
+The above has all of the several include files needed by the Pixy2 camera
+---------------------------------------------------------------------------
+
 Pixy library easy install zipped file at 
 https://github.com/charmedlabs/pixy2/raw/master/releases/arduino/arduino_pixy2-1.0.3.zip
 
