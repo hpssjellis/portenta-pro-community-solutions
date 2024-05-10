@@ -34,9 +34,9 @@ https://pixycam.com/pixy2
 
 // VIN   = Portenta +3V3
 // GND   = Portenta GND
-// MISO  = Portenta D10 (PC_2)
-// SCK   = Portenta D9  (PI_1)
-// MOSI  = Portenta D8  (PC_3)
+// MISO  = Portenta D10 (PC_2)  different on XIAO D9
+// SCK   = Portenta D9  (PI_1)  different on XIAO D8
+// MOSI  = Portenta D8  (PC_3)  different on XIAO D10
 
 // 6 prong cable using the red wire at top to the left
 //  3V3, D10
