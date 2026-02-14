@@ -96,7 +96,7 @@ bool myOnlyOnce = false;
 
 
 
-PNG png; // static instance of the PNG encoder class
+PNGENC png;// static instance of the PNG encoder class
 FILE *myPngFile;
 
 
