@@ -58,7 +58,7 @@ bool myOnlyOnce = false;
 
 
 
-PNG png; // static instance of the PNG encoder class
+PNGENC png; // static instance of the PNG encoder class
 
 
 // don't forget to set the ucOut[] to be able to handle the PNG image size
