@@ -13,8 +13,8 @@
  *  using 128 x 64 seeeduino OLED
  *  black GND 
  *  red 3v3      so do not need the protective resistors below
- *  white SDA    D11 // on portenta
- *  yellow SCL   D12 // on portenta
+ *  white SDA    D4  on XIAO            D11 // on portenta
+ *  yellow SCL   D5   on XIAO           D12 // on portenta
  *
  * another reference here 
  * https://github.com/olikraus/u8g2/wiki/u8g2reference#setfont
